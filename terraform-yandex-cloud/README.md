@@ -1,8 +1,53 @@
-# Sample GitLab Project
+## Установка Terraform
 
-This sample project shows how a project in GitLab looks for demonstration purposes. It contains issues, merge requests and Markdown files in many branches,
-named and filled with lorem ipsum.
+Инструкция по установке Terraform на Ubuntu server 22.04
 
-You can look around to get an idea how to structure your project and, when done, you can safely delete this project.
+### Обновить систему
 
-[Learn more about creating GitLab projects.](https://docs.gitlab.com/ee/gitlab-basics/create-project.html)
+Обновить систему
+
+```
+sudo apt update && sudo apt upgrade -y
+```
+
+### Загрузить Terraform (с зеркала)
+
+Создаем дирректорию и открываем ее
+```
+mkdir terraform
+cd terraform/
+```
+Загружаем terraform с зеркала
+
+```
+wget https://hashicorp-releases.yandexcloud.net/terraform/1.6.3/terraform_1.6.3_linux_amd64.zip
+```
+
+### Распаковать скачанный архив
+
+Установим (при необходимости) unzip и распокуем скачанный архив
+
+```
+sudo apt install unzip
+unzip terraform_1.6.3_linux_amd64.zip
+```
+
+### Удалить архива
+
+Удалим распакованный архив
+
+```
+rm terraform_1.6.3_linux_amd64.zip
+```
+### Добавить в переменную PATH путь к папке с исполняемым файлом Terraform 
+
+После распаковки добавим путь к папке, в которой находится исполняемый файл Terraform, в переменную PATH:
+
+```
+export PATH=$PATH:/home/adrin/terraform
+```
+### Проверка версии Terraform
+
+```
+terraform --version
+```
