@@ -310,6 +310,7 @@ https://console.cloud.yandex.ru/folders/b1gltt4aeqoofm7e2pnj/compute/instances
 ansible all -m ping -v
 ```
 Результат выполнения команды:
+
 ![Скриншот-1](ping-pong.png)
 
 Если ansible.conf отсутствует в папке с ansible - сгенерировать его
@@ -383,5 +384,6 @@ nano nginx.yml
 ansible-playbook nginx.yml -v
 ```
 Результат повторного выполнения команды:
+
 ![Скриншот-1](final.png)
 
