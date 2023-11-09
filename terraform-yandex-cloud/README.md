@@ -318,3 +318,58 @@ inventory=/home/adrine/.ansible/hosts
 ```
 [privilege_escalation]
 ```
+Создаем роль для установки nginx
+```
+ansible-galaxy init nginx
+```
+В дирректории ansible создаем файл nginx.yml
+```
+nano nginx.yml
+```
+следующего содержания
+
+```
+---
+- hosts: 158.160.16.194
+  remote_user: user
+  gather_facts: no
+  roles:
+  - include_role:
+    name: nginx
+    tasks_from: main
+    become: yes
+    become_method: sudo
+```
+В созданной дирректори роли nginx в папке tasks отредактируем файл main.yml
+```
+---
+# установка nginx
+- name: Install nginx  (state=present is optional)
+  become: yes
+  ansible.builtin.apt:
+    name: nginx
+    state: present
+
+# замена файла конфигурации nginx
+- name: Replace nginx.conf
+  template:
+    src=templates/nginx.conf
+    dest=/etc/nginx/nginx.conf
+
+#создание начальной страницы index.html
+- name: "Add Index page"
+  template:
+    src: "index.html.j2"
+    dest: "/var/www/html/index.html"
+    owner: root
+    group: root
+    mode: 0755
+  notify: "Restart nginx"
+
+```
+В папку templates скопируем (согласно заданию) файлы index.html.j2 (стартовая страница c добавкой расширения "j2") и nginx.conf (конфигурация nginx)
+
+Запускаем на выполнение созданную роль
+```
+ansible-playbook nginx.yml -v
+```
