@@ -106,7 +106,11 @@ output "external_ip_address_vm_1" {
       become_method: sudo
 ```
 Провести тестирование.
+
+
 ---
+
+
 # Решение 1
 
 ## Установка Terraform
