@@ -374,5 +374,5 @@ nano nginx.yml
 ansible-playbook nginx.yml -v
 ```
 Результат повторного выполнения команды:
-![Скриншот-1](https://192.168.0.120/netology/terraform-yandex-cloud/blob/master/final.png)
+![Скриншот-1](final.png)
 
