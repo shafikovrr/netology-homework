@@ -159,7 +159,7 @@ rm terraform_1.6.3_linux_amd64.zip
 После распаковки добавим путь к папке, в которой находится исполняемый файл Terraform, в переменную PATH:
 
 ```
-# действует до перезагрузки
+!!! действует до перезагрузки (при необходимости изменить)!!!
 export PATH=$PATH:/home/adrin/terraform 
 ```
 ### Проверка версии Terraform
@@ -396,3 +396,141 @@ ansible-playbook nginx.yml -v
 1. Перестроить инфраструктуру и добавить в неё вторую виртуальную машину.
 2. Установить на вторую виртуальную машину базу данных.
 3. Выполнить проверку состояния запущенных служб через Ansible.
+
+# Решение задачи 2
+
+## 1. Перестроить инфраструктуру и добавить в неё вторую виртуальную машину.
+
+Изменим файл main.tf
+
+### Создаем файл main.tf 
+
+Добавляем вторую виртуальную машину и редактируем вывод ip адресов
+
+```
+terraform {
+  required_providers {
+    yandex = {
+      source = "yandex-cloud/yandex"
+    }
+  }
+  required_version = ">= 0.13"
+}
+
+variable "yandex_cloud_token" {
+  type = string
+  description = "y0_AgAAAAAGdhqDAATuwQAAAADxVkChy8lgcyHVSnChPj4Br75IEyvd9So"
+}
+
+provider "yandex" {
+  token     = var.yandex_cloud_token  #секретные данные должны быть в сохранности!! Никогда не выкладывайте токен в публичный доступ.
+  cloud_id  = "b1ghmbbcc16prrludk63"  #_https://console.cloud.yandex.ru/cloud/b1ghmbbcc16prrludk63
+  folder_id = "b1gltt4aeqoofm7e2pnj"  #_https://console.cloud.yandex.ru/folders/b1gltt4aeqoofm7e2pnj
+  zone      = "ru-central1-b"         #_https://cloud.yandex.ru/docs/overview/concepts/geo-scope
+}
+
+resource "yandex_compute_instance" "vm-1" {
+
+  name                        = "terraform1"
+
+  resources {
+    cores         = 2
+    memory        = 2
+  }
+
+  boot_disk {
+    initialize_params {
+      image_id = "fd87e3vsemiab8q1tl0h"
+    }
+  }
+
+  network_interface {
+    subnet_id = yandex_vpc_subnet.subnet-1.id
+    nat       = true
+  }
+  
+  metadata = {
+    user-data = "${file("./meta.yaml")}"
+  }
+}
+
+resource "yandex_compute_instance" "vm-2" {
+
+  name                        = "terraform2"
+
+  resources {
+    cores         = 2
+    memory        = 2
+  }
+
+  boot_disk {
+    initialize_params {
+      image_id = "fd87e3vsemiab8q1tl0h"
+    }
+  }
+
+  network_interface {
+    subnet_id = yandex_vpc_subnet.subnet-1.id
+    nat       = true
+  }
+  
+  metadata = {
+    user-data = "${file("./meta.yml")}"
+  }
+}
+
+resource "yandex_vpc_network" "network-1" {
+  name = "network1"
+}
+
+resource "yandex_vpc_subnet" "subnet-1" {
+  name           = "subnet1"
+  zone           = "ru-central1-b"
+  network_id     = yandex_vpc_network.network-1.id
+  v4_cidr_blocks = ["192.168.10.0/24"]
+}
+output "internal_ip_address_vm_1" {
+  value = yandex_compute_instance.vm-1.network_interface.0.ip_address
+}
+
+output "internal_ip_address_vm_2" {
+  value = yandex_compute_instance.vm-2.network_interface.0.ip_address
+}
+
+output "external_ip_address_vm_1" {
+  value = yandex_compute_instance.vm-1.network_interface.0.nat_ip_address
+}
+
+
+output "external_ip_address_vm_2" {
+  value = yandex_compute_instance.vm-2.network_interface.0.nat_ip_address
+}
+```
+
+### Создаем виртуальную машину
+
+Удаление созданной инфраструктуры
+
+```
+terraform destroy
+```
+
+Инициализируем провайдера, указанного в конфигурационном файле main.tf, что позволит работать с ресурсами и источниками данных провайдера.
+```
+terraform init
+```
+
+Произведем проверку
+
+```
+terraform plan
+```
+
+Создаем виртуальную машину
+
+```
+terraform apply
+```
+Проверяем резуьтат на yandex cloud
+
+
