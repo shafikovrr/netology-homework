@@ -281,6 +281,13 @@ terraform apply
 ```
 Проверяем резуьтат на yandex cloud
 
+
+Удаление созданной инфраструктуры
+
+```
+terraform destroy
+```
+
 ## Установка Ansible на хосте с terraform
 
 Установить ansible 
