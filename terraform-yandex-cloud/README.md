@@ -613,3 +613,5 @@ nano nginx.yml
 ansible-playbook nginx.yml -v
 ```
 Результат повторного выполнения команды:
+
+![Скриншот-1](z2-1.png)
