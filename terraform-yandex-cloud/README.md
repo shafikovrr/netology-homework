@@ -159,7 +159,8 @@ rm terraform_1.6.3_linux_amd64.zip
 После распаковки добавим путь к папке, в которой находится исполняемый файл Terraform, в переменную PATH:
 
 ```
-export PATH=$PATH:/home/adrin/terraform
+# действует до перезагрузки
+export PATH=$PATH:/home/adrin/terraform 
 ```
 ### Проверка версии Terraform
 
@@ -167,4 +168,153 @@ export PATH=$PATH:/home/adrin/terraform
 terraform --version
 ```
 
+### Создаем файл main.tf 
 
+```
+terraform {
+  required_providers {
+    yandex = {
+      source = "yandex-cloud/yandex"
+    }
+  }
+  required_version = ">= 0.13"
+}
+
+# вывод токена при каждом запуске terraform 
+# https://oauth.yandex.ru/authorize?response_type=token&client_id=1a6990aa636648e9b2ef855fa7bec2fb
+
+variable "yandex_cloud_token" {
+  type = string
+  description = "y0_AgAAAAAGdhqDAATuwQAAAADxVkChy8lgcyHVSnChPj4Br75IEyvd9So" #секретный токе (публиковать нельзя!!!)
+}
+
+# Настройка провайдера yandex
+provider "yandex" {
+  token     = var.yandex_cloud_token  #секретные данные должны быть в сохранности!! Никогда не выкладывайте токен в публичный доступ.
+  cloud_id  = "b1ghmbbcc16prrludk63"  #_https://console.cloud.yandex.ru/cloud/b1ghmbbcc16prrludk63
+  folder_id = "b1gltt4aeqoofm7e2pnj"  #_https://console.cloud.yandex.ru/folders/b1gltt4aeqoofm7e2pnj
+  zone      = "ru-central1-b"         #_https://cloud.yandex.ru/docs/overview/concepts/geo-scope
+}
+
+# Параметры машины vm-1
+resource "yandex_compute_instance" "vm-1" {
+
+  name                        = "terraform1"
+
+  resources {
+    cores         = 2
+    memory        = 2
+  }
+# image_id берем с yandex cloud (при создании вм - при выборе операционной системы - нажимаем на вопрос справа от назвния)
+  boot_disk {
+    initialize_params {
+      image_id = "fd87e3vsemiab8q1tl0h"
+    }
+  }
+# настройка nat (внешняя сеть)
+  network_interface {
+    subnet_id = yandex_vpc_subnet.subnet-1.id
+    nat       = true
+  }
+
+  metadata = {
+    user-data = "${file("./meta.yaml")}"
+  }
+}
+
+resource "yandex_vpc_network" "network-1" {
+  name = "network1"
+}
+# настройка внутренней сети
+resource "yandex_vpc_subnet" "subnet-1" {
+  name           = "subnet1"
+  zone           = "ru-central1-b"
+  network_id     = yandex_vpc_network.network-1.id
+  v4_cidr_blocks = ["192.168.10.0/24"]
+}
+# Вывод информаци по IP (внутренний ip и внешний ip)
+output "internal_ip_address_vm_1" {
+  value = yandex_compute_instance.vm-1.network_interface.0.ip_address
+}
+output "external_ip_address_vm_1" {
+  value = yandex_compute_instance.vm-1.network_interface.0.nat_ip_address
+}
+```
+### Создаем файл meta.yaml 
+
+Генерируем параметры ssh содединения (ключи)
+```
+ssh-keygen 
+```
+
+Задаем имя пользователя, его группу и параметры подключения по ssh
+
+```
+cloud-config
+users:
+  - name: user
+    groups: sudo
+    shell: /bin/bash
+    sudo: 'ALL=(ALL) NOPASSWD:ALL'
+    ssh-authorized-keys:
+      - ssh-rsa AAAAB3NzaC1yc2EAAA...xcLPs8= adrin@terraform-srv
+# ssh-authorized-keys - id_rsa.pub
+```
+
+### Создаем виртуальную машину
+
+Инициализируем провайдера, указанного в конфигурационном файле main.tf, что позволит работать с ресурсами и источниками данных провайдера.
+```
+terraform init
+```
+
+Произведем проверку
+
+```
+terraform plan
+```
+
+Создаем виртуальную машину
+
+```
+terraform apply
+```
+Проверяем резуьтат на yandex cloud
+
+## Установка Ansible на хосте с terraform
+
+Установить ansible 
+```
+sudo apt install ansible
+```
+Создать в папке с ansible файл hosts
+
+```
+cd .ansible/
+nano hosts
+```
+Содержимое файла (достаточно указать внешний ip адресс созданной ранее виртуальной машины)
+```
+https://console.cloud.yandex.ru/folders/b1gltt4aeqoofm7e2pnj/compute/instances
+```
+Проверить соединение с хоста с управляемой (виртуальной) сашиной
+
+```
+ansible all -m ping -v
+```
+
+Если ansible.conf отсутствует в папке с ansible - сгенерировать его
+```
+ansible-config init --disabled > ansible.cfg
+```
+Произвести настройку ansible.conf
+
+```
+private_key_file=/home/adrin/.ssh/id_rsa
+remote_user=user
+inventory=/home/adrine/.ansible/hosts
+```
+При необходимости меняем значения в блоке
+```
+[privilege_escalation]
+```
