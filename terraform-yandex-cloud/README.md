@@ -533,4 +533,83 @@ terraform apply
 ```
 Проверяем резуьтат на yandex cloud
 
+## 2. Установить на вторую виртуальную машину базу данных.
 
+### Отредактировать файл nginx.yml
+
+
+В дирректории ansible отредактируем файл hosts
+
+```
+nano hosts
+```
+
+Содержание файла
+
+```
+[srv1]
+ip_srv1
+
+[srv2]
+ip_srv2
+```
+
+
+В дирректории ansible отредактируем файл nginx.yml
+
+```
+nano nginx.yml
+```
+
+Содержание файла
+
+```
+---
+- hosts: srv1
+  remote_user: user
+  gather_facts: no
+  roles:
+  - include_role:
+    name: nginx
+    tasks_from: main
+    become: yes
+    become_method: sudo
+
+- hosts: srv2 # apt update && apt upgrade && install postgresql
+  remote_user: user
+  gather_facts: no
+  tasks:
+    - name: Update apt repo and cache on all Ubuntu boxes
+      apt:
+        update_cache: yes
+        force_apt_get: yes
+        cache_valid_time: 3600
+    - name: Upgrade all packages on servers
+      apt:
+        upgrade: dist
+        force_apt_get: yes
+    - name: Install postgresql
+      apt:
+        name: postgresql
+        state: present
+        update_cache: yes
+      notify:
+        - Enable postgresql
+
+- hosts: all # проверка состояния запущенных служб через Ansible
+  remote_user: user
+  gather_facts: no
+  tasks:
+    - name: collect facts about system services
+      service_facts:
+      register: services_state
+    - name: Debug
+      debug:
+        var: services_state
+```
+
+Запускаем на выполнение созданную роль
+```
+ansible-playbook nginx.yml -v
+```
+Результат повторного выполнения команды:
