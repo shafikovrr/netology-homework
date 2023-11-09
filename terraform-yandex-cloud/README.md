@@ -648,3 +648,5 @@ ansible-playbook nginx.yml -v
 ![Скриншот-1](img/main.tf.png)
 
 ![Скриншот-1](img/terraform apply.png)
+
+![Скриншот-1](img/final-2.png)
