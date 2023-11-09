@@ -185,7 +185,7 @@ terraform {
 
 variable "yandex_cloud_token" {
   type = string
-  description = "y0_AgAAAAAGdhqDAATuwQAAAADxVkChy8lgcyHVSnChPj4Br75IEyvd9So" #секретный токе (публиковать нельзя!!!)
+  description = "y0_AgAAAAAGd......j4Br75IEyvd9So" #секретный токе (публиковать нельзя!!!)
 }
 
 # Настройка провайдера yandex
@@ -419,7 +419,7 @@ terraform {
 
 variable "yandex_cloud_token" {
   type = string
-  description = "y0_AgAAAAAGdhqDAATuwQAAAADxVkChy8lgcyHVSnChPj4Br75IEyvd9So"
+  description = "y0_AgAAAAAGd...j4Br75IEyvd9So"
 }
 
 provider "yandex" {
@@ -623,3 +623,20 @@ ansible-playbook nginx.yml -v
 ![Скриншот-1](img/z2-2-postgresql.png)
 
 ![Скриншот-1](img/z2-2-end.png)
+
+---
+
+# Задача 3
+
+## Выполните действия, приложите скриншот скриптов, скриншот выполненного проекта.
+
+Изучите [инструкцию](https://cloud.yandex.ru/docs/tutorials/infrastructure-management/terraform-quickstart) yandex для terraform. Добейтесь работы паплайна с безопасной передачей токена от облака в terraform через переменные окружения. Для этого:
+
+1. Настройте профиль для yc tools по инструкции.
+2. Удалите из кода строчку "token = var.yandex_cloud_token". Terraform будет считывать значение ENV переменной YC_TOKEN.
+3. Выполните команду export YC_TOKEN=$(yc iam create-token) и в том же shell запустите terraform.
+4. Для того чтобы вам не нужно было каждый раз выполнять export - добавьте данную команду в самый конец файла ~/.bashrc
+
+# Решение задачи 3
+
+## 1. Настройка профиля для yc tools.
