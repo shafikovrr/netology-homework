@@ -639,4 +639,12 @@ ansible-playbook nginx.yml -v
 
 # Решение задачи 3
 
-## 1. Настройка профиля для yc tools.
+![Скриншот-1](img/cli-1.png)
+
+![Скриншот-1](img/cli-2.png)
+
+![Скриншот-1](img/cli-3.png)
+
+![Скриншот-1](img/main.tf.png)
+
+![Скриншот-1](img/terraform apply.png)
