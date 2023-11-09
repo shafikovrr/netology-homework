@@ -311,7 +311,7 @@ ansible all -m ping -v
 ```
 Результат выполнения команды:
 
-![Скриншот-1](ping-pong.png)
+![Скриншот-1](img/ping-pong.png)
 
 Если ansible.conf отсутствует в папке с ansible - сгенерировать его
 ```
@@ -385,7 +385,7 @@ ansible-playbook nginx.yml -v
 ```
 Результат повторного выполнения команды:
 
-![Скриншот-1](final.png)
+![Скриншот-1](img/final.png)
 
 ---
 
@@ -614,12 +614,12 @@ ansible-playbook nginx.yml -v
 ```
 Результат повторного выполнения команды:
 
-![Скриншот-1](z2-1.png)
+![Скриншот-1](img/z2-1.png)
 
-![Скриншот-1](z2-1-nginx.png)
+![Скриншот-1](img/z2-1-nginx.png)
 
-![Скриншот-1](z2-2.png)
+![Скриншот-1](img/z2-2.png)
 
-![Скриншот-1](z2-2-postgresql.png)
+![Скриншот-1](img/z2-2-postgresql.png)
 
-![Скриншот-1](z2-2-end.png)
+![Скриншот-1](img/z2-2-end.png)
