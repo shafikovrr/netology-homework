@@ -32,9 +32,88 @@ sudo apt-get install jenkins
 
 2. Установите на машину с jenkins golang.
 
+Скачаем архив Go
+
+```wget https://go.dev/dl/go1.21.4.linux-amd64.tar.gz```
+
+Удаление предыдущей версии и установка GO
+
+```rm -rf /usr/local/go && sudo tar -C /usr/local -xzf go1.21.4.linux-amd64.tar.gz```
+ 
+ Установим переменную окружения
+
+```
+echo "export PATH=$PATH:/usr/local/go/bin" | sudo tee -a /etc/profile
+sudo reboot
+go version
+```
+
+![install_go](img/8-02-1_install_go_2.png)
 
 3. Используя свой аккаунт на GitHub, сделайте себе форк репозитория. В этом же репозитории находится дополнительный материал для выполнения ДЗ.
+
+```Fork```
+
 4. Создайте в jenkins Freestyle Project, подключите получившийся репозиторий к нему и произведите запуск тестов и сборку проекта go test . и docker build ..
+
+Вход на web gui jenkins
+
+```http://192.168.0.6:8080/login?from=%2F```
+
+Пароль администратора
+
+```sudo cat /var/lib/jenkins/secrets/initialAdminPassword```
+
+Установка плагинов по умолчанию
+
+```Install suggested plugins```
+
+---
+
+Создание задачи
+
+```Create a job```
+
+Создать задачу со свободной конфигурацией
+
+![freestyle_project](img/8-02-1_freestyle_project_4.png)
+
+### Шаги сборки
+
+Выполнить команду shell 1
+
+```
+/usr/local/go/bin/go test .
+```
+
+Выполнить команду shell 2
+
+```
+docker build . -t 192.168.0.6:8082/hello-world:v$BUILD_NUMBER
+```
+
+Установить docker и добавить jenkins в группу docker
+
+```
+sudo apt-get update
+sudo apt-get install ca-certificates curl gnupg
+sudo install -m 0755 -d /etc/apt/keyrings
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+sudo chmod a+r /etc/apt/keyrings/docker.gpg
+echo   "deb [arch="$(dpkg --print-architecture)" signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
+    "$(. /etc/os-release && echo "$VERSION_CODENAME")" stable" |   sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+sudo apt-get update
+sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+sudo usermod -a -G docker jenkins
+sudo systemctl restart jenkins
+```
+
+![final_1](img/8-02-1_final_1_4.png)
+![final_2](img/8-02-1_final_2_4.png)
+![final_3](img/8-02-1_final_3_4.png)
+![final_4](img/8-02-1_final_4_4.png)
+
+
 
 ---
 
@@ -46,6 +125,7 @@ sudo apt-get install jenkins
 2. Перепишите сборку из задания 1 на declarative в виде кода.
 
 В качестве ответа пришлите скриншоты с настройками проекта и результатами выполнения сборки.
+
 
 ## Решение 2
 
