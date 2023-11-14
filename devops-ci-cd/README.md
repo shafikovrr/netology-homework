@@ -130,7 +130,42 @@ sudo systemctl restart jenkins
 ## Решение 2
 
 1. Создайте новый проект pipeline.
+
+Установим nexus
+
+```sudo docker run -d -p 8081:8081 -p 8082:8082 --name nexus -e INSTALL4J_ADD_VM_PARAMS="-Xms1024m-Xmx1024m -XX:MaxDirectMemorySize=1024m" sonatype/nexus3
+```
+
 2. Перепишите сборку из задания 1 на declarative в виде кода.
+
+Копируем файл с паролем в 
+
+```cp my_password.txt /var/lib/jenkins/```
+
+```
+pipeline {
+ agent any
+ stages {
+  stage('Git') {
+   steps {git 'https://github.com/netology-code/sdvps-materials.git'}
+  }
+  stage('Test') {
+   steps {
+    sh '/usr/local/go/bin/go test .'
+   }
+  }
+  stage('Build') {
+   steps {
+    sh 'docker build . -t ubuntu-bionic:8082/hello-world:v$BUILD_NUMBER'
+   }
+  }
+  stage('Push') {
+   steps {
+    sh 'docker login ubuntu-bionic:8082 -u admin --password-stdin < ~/my_password.txt && docker push ubuntu-bionic:8082/hello-world:v$BUILD_NUMBER && docker logout'   }
+  }
+ }
+}
+```
 
 ---
 
