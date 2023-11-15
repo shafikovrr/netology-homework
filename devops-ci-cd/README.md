@@ -133,7 +133,8 @@ sudo systemctl restart jenkins
 
 Установим nexus
 
-```sudo docker run -d -p 8081:8081 -p 8082:8082 --name nexus -e INSTALL4J_ADD_VM_PARAMS="-Xms1024m-Xmx1024m -XX:MaxDirectMemorySize=1024m" sonatype/nexus3
+```
+sudo docker run -d -p 8081:8081 -p 8082:8082 --name nexus -e INSTALL4J_ADD_VM_PARAMS="-Xms1024m-Xmx1024m -XX:MaxDirectMemorySize=1024m" sonatype/nexus3
 ```
 
 2. Перепишите сборку из задания 1 на declarative в виде кода.
