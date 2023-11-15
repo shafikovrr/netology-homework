@@ -167,6 +167,9 @@ pipeline {
  }
 }
 ```
+![final_1](img/8-02-2_final_2_2.png)
+![final_1](img/8-02-2_final_1_2.png)
+![final_1](img/8-02-2_final_3_2.png)
 
 ---
 
@@ -187,6 +190,12 @@ pipeline {
 2. Создайте raw-hosted репозиторий.
 3. Измените pipeline так, чтобы вместо Docker-образа собирался бинарный go-файл. Команду можно скопировать из Dockerfile.
 4. Загрузите файл в репозиторий с помощью jenkins.
+
+![final_1](img/8-02-3_final_1_4.png)
+![final_1](img/8-02-3_final_2_4.png)
+![final_1](img/8-02-3_final_3_4.png)
+![final_1](img/8-02-3_final_4_4.png)
+
 
 # Задание 4*
 
