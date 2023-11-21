@@ -8,6 +8,6 @@
 
 ### В качестве ответа в репозиторий шаблона с решением добавьте скриншоты с настройками раннера в проекте.
 
-![gitlab-1](img/gitlab1.png)
-![gitlab-2](img/gitlab2.png)
-![gitlab-3](img/gitlab3.png)
+![gitlab-1](img/gitlab-01.png)
+![gitlab-2](img/gitlab-02.png)
+![gitlab-3](img/gitlab-03.png)
