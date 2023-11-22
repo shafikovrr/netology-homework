@@ -27,7 +27,7 @@ vagrant ssh -- sudo cat /etc/gitlab/initial_root_password
      gitlab/gitlab-runner:latest register
 
 http://gitlab.localdomain/
-token: GR134894......x
+token: GR134......x
 docker
 go:1.17
 
@@ -59,18 +59,6 @@ sudo nano /srv/gitlab-runner/config/config.toml
    * скриншоты с успешно собранными сборками.
 
 ```
-sudo apt install vagrant
-sudo apt install virtualbox
-wget https://app.vagrantup.com/ubuntu/boxes/noble64/versions/20231031.0.0/providers/virtualbox/unknown/vagrant.box
-
-vagrant init ubuntu/noble64
-vagrant box add ubuntu/noble64 bionic-server-cloudimg-amd64-vagrant.box
-vagrant up
-#vagrant halt
-#vagrant destroy
-vagrant ssh -- sudo cat /etc/gitlab/initial_root_password
-Mc3Ia........................kKuM=
-
 git clone https://github.com/netology-code/sdvps-materials.git
 git remote -v
 git remote add mygitlab http://gitlab.localdomain/netology/my_project.git
