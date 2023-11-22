@@ -111,3 +111,4 @@ git add .
 git commit -am "add gitlab-ci.yml"
 git push mygitlab
 ```
+![gitlab-4](img/gitlab-04.png)
