@@ -23,7 +23,7 @@ Configuration > Create template > (Template > Template name:"CpuRamPercentUsed">
 
 CpuRamPercentUsed > Items > Create items > (Items > Name:"CpuPrcentUsed">Key:"system.cpu.util[all,system,avg1]" \
                                             Units:"%">Update interval:"{$UPDATE_INTERVAL}") > Add
-CpuRamPercentUsed > Items > Create items > (Items > Name:"RamPrcentUsed">Key:"vm.memory.size[active]" \
+CpuRamPercentUsed > Items > Create items > (Items > Name:"RamPrcentUsed">Key:"vm.memory.size[pavailable]" \
                                             Units:"%">Update interval:"{$UPDATE_INTERVAL}") > Add
 ![new_items](img/new-items.png)
 
