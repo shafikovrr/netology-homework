@@ -16,14 +16,21 @@
 # Решение 1
 
 1. Создание шаблона:
+
 Configuration > Create template > (Template > Template name:"CpuRamPercentUsed">Groups:"Edu, Linux servers") \
                                   (Macros > Macro:"{$UPDATE_INTERVAL}">Value:"5s") > Add
 2. Добавление Items
+
 CpuRamPercentUsed > Items > Create items > (Items > Name:"CpuPrcentUsed">Key:"system.cpu.util[all,system,avg1]" \
-                                            Update interval:"{$UPDATE_INTERVAL}") > Add
+                                            Units:"%">Update interval:"{$UPDATE_INTERVAL}") > Add
 CpuRamPercentUsed > Items > Create items > (Items > Name:"RamPrcentUsed">Key:"vm.memory.size[active]" \
-                                            Update interval:"{$UPDATE_INTERVAL}") > Add
+                                            Units:"%">Update interval:"{$UPDATE_INTERVAL}") > Add
 ![new_items](img/new-items.png)
 
 4. Прикрепление созданных items к виртуальной машине
-Configuration > Hosts >
+
+Configuration > Hosts > AgentZabbix > Templates (Name:"CpuRamPercentUsed") > Update
+
+![latest_data_cpu](img/CpuPrcentUsed.png)
+
+![latest_data_ram](img/RamPrcentUsed.png)
