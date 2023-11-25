@@ -24,6 +24,7 @@ Configuration > Create template > (Template > Template name:"CpuRamPercentUsed">
 
 CpuRamPercentUsed > Items > Create items > (Items > Name:"CpuPrcentUsed">Key:"system.cpu.util[all,system,avg1]" \
                                             Units:"%">Update interval:"{$UPDATE_INTERVAL}") > Add
+                                            
 CpuRamPercentUsed > Items > Create items > (Items > Name:"RamPrcentUsed">Key:"vm.memory.size[pavailable]" \
                                             Units:"%">Update interval:"{$UPDATE_INTERVAL}") > Add
 ![new_items](img/new-items.png)
@@ -57,25 +58,7 @@ Latest data
 
 # Решение 2
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+![latest_data_2vms](img/final-2z.png)
 
 ---
 
@@ -95,3 +78,11 @@ Latest data
 Прикрепите в файл README.md скриншот страницы хостов, где будут видны привязки шаблонов с названиями «Задание 2-3». Хосты должны иметь зелёный статус подключения
 
 # Решение 3
+
+![latest_data_2vms](img/2items.png)
+
+![latest_data_2vms](img/latest-data.png)
+
+Для подключения свего шаблона пришлось удалить из Linux by Zabbix Agent повторябщиеся items
+
+![latest_data_2vms](img/latest-data-filter-PrcentUsed.png)
