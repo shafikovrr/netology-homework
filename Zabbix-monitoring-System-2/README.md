@@ -31,6 +31,5 @@ CpuRamPercentUsed > Items > Create items > (Items > Name:"RamPrcentUsed">Key:"vm
 
 Configuration > Hosts > AgentZabbix > Templates (Name:"CpuRamPercentUsed") > Update
 
-![latest_data_cpu](img/CpuPrcentUsed.png)
+![latest_data_cpu](img/CpuPrcentUsed-RamPrcentUsed.png)
 
-![latest_data_ram](img/RamPrcentUsed.png)
