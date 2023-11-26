@@ -106,3 +106,42 @@ Latest data
 # Решение 4
 
 ![dashboard](img/my-dashboard.png)
+
+---
+
+# Задание 5* со звёздочкой
+
+### Создайте карту и расположите на ней два своих хоста.
+
+#### Процесс выполнения
+
+1. Настройте между хостами линк.
+2. Привяжите к линку триггер, связанный с agent.ping одного из хостов, и установите индикатором сработавшего триггера красную пунктирную линию.
+3. Выключите хост, чей триггер добавлен в линк. Дождитесь срабатывания триггера.
+
+#### Требования к результату
+
+Прикрепите в файл README.md скриншот карты, где видно, что триггер сработал, с названием «Задание 5»
+
+# Решение 5
+
+Добавление к хостам ICMP 
+
+Configuration>Hosts>shafikovrr-1>Templates>ICMP ping>Update
+Configuration>Hosts>shafikovrr-2>Templates>ICMP ping>Update
+
+Создание карты
+
+Administration>General>Images>Type(Background)>Create background>(Name:"plan"-Upload:"plan.png")>Add
+Monitoring>Maps>Create map>(Name:"HomeLab"-Width:"493"-Height:"734"-BackgroundImage:"plan")>Add
+EdiEditt Map>Map element>Add (Type:"Host"-Label:"SRV_shafikovrr-1"-Host:/Host group/Name:"shafikovrr-1")>Apply>Close
+             Map element>Add (Type:"Host"-Label:"SRV_shafikovrr-2"-Host:/Host group/Name:"shafikovrr-2")>Apply>Close
+Выделить два хоста>Link:Add>Apply>Close
+Выделить shafikovrr-1>Links:/Action/Edit>(Label:"Link"-Link indicators-Add)> \
+	(Host:"shafikovrr-1"-"ICMP: Unavailable by ICMP ping"-Select)
+	(Host:"shafikovrr-2"-"ICMP: Unavailable by ICMP ping"-Select)
+Выключаем хост shafikovrr-2
+
+![map-ping-check](img/icmp-ping.png)
+
+
