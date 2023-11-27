@@ -64,9 +64,62 @@ ExecReload=/bin/kill -HUP $MAINPID Restart=on-failure
 WantedBy=multi-user.target
 ```
 Запуск сервиса prometheus
+
 ```
+systemctl enable prometheus.service
 systemctl start prometheus.service
 systemctl status prometheus.service
 ```
 
 ![prometheus.service](img/status-prometheus.service.png)
+
+---
+
+# Задание 2
+
+### Установите Node Exporter.
+
+#### Процесс выполнения
+
+1. Выполняя ДЗ сверяйтесь с процессом отражённым в записи лекции.
+2. Скачайте node exporter приведённый в презентации и в соответствии с лекцией разместите файлы в целевые директории
+3. Создайте сервис для как показано на уроке
+4. Проверьте что node exporter запускается, останавливается, перезапускается и отображает статус с помощью systemctl
+
+#### Требования к результату
+
+Прикрепите к файлу README.md скриншот systemctl status node-exporter, где будет написано: node-exporter.service — Node Exporter Netology Lesson 9.4 — [Ваши ФИО]
+
+# Решение 2
+
+Установка Node Exporter
+
+```
+wget https://github.com/prometheus/node_exporter/releases/download/v1.7.0/node_exporter-1.7.0.linux-amd64.tar.gz
+tar xvfz node_exporter-1.7.0.linux-amd64.tar.gz
+```
+Первый запуск Node Exporter
+
+```
+cd node_exporter-1.7.0.linux-amd64
+./node_exporter
+```
+Копируем Node Exporter в папку prometheus
+
+```
+mkdir /etc/prometheus/node-exporter
+cp ./node_exporter /etc/prometheus/node-exporter
+```
+Передаем права на папку Node Exporter пользователю Prometheus
+
+```
+chown prometheus:prometheus -R /etc/prometheus/node-exporter
+```
+Создаем сервис Node Exporter
+```
+nano /etc/systemd/system/node-exporter.service
+systemctl enable node-exporter.service
+systemctl start node-exporter.service
+systemctl status node-exporter.service
+```
+![node-exporter.service](img/status.node-exporter.service.png) 
