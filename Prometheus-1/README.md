@@ -242,4 +242,28 @@ Prometheus > Connection (http://localhost:9090) > Save and test
 
 Home > Dashboard > New (Import) > "1860" > Load > Prometheus > Import
 
-![grafana_dashboard](img/grafana-dashboard.png)
+![grafana_dashboard_1860](img/grafana-dashboard_1860.png)
+
+---
+
+# Задание 5
+
+### Интегрируйте Grafana и Prometheus.
+
+#### Требования к результату
+
+* Прикрепите к файлу README.md скриншот дашборда (ID:11074) с поступающими туда данными из Node Exporter
+
+#### Критерии оценки
+
+* Выполнено минимум 3 обязательных задания
+* Прикреплены требуемые скриншоты
+* Задание оформлено в шаблоне с решением и опубликовано на GitHub
+
+# Решение 5
+
+Подключаем дашборд
+
+Home > Dashboard > New (Import) > "11074" > Load > Prometheus > Import
+
+![grafana_dashboard_11074](img/grafana-dashboard-11074.png)
