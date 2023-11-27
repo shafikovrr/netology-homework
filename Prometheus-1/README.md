@@ -70,6 +70,11 @@ systemctl enable prometheus.service
 systemctl start prometheus.service
 systemctl status prometheus.service
 ```
+Адрес входа 
+
+```
+http://192.168.0.15:9090
+```
 
 ![prometheus.service](img/status-prometheus.service.png)
 
@@ -140,6 +145,14 @@ systemctl enable node-exporter.service
 systemctl start node-exporter.service
 systemctl status node-exporter.service
 ```
+
+Адрес входа
+
+```
+http://192.168.0.15:9100
+```
+
+
 ![node-exporter.service](img/status.node-exporter.service.png) 
 
 ---
@@ -180,3 +193,53 @@ systemctl status prometheus.service
 
 ![prometheus_conf](img/prometheus-status-configuratuion.png)
 ![prometheus_status_targets](img/prometheus-status-targets.png)
+
+---
+
+# Задание 4
+
+### Установите Grafana.
+
+#### Требования к результату
+
+Прикрепите к файлу README.md скриншот левого нижнего угла интерфейса, чтобы при наведении на иконку пользователя были видны ваши ФИО
+
+# Решение 4
+
+Установка Grafana
+
+```
+sudo apt-get install -y adduser libfontconfig1 musl
+wget https://dl.grafana.com/oss/release/grafana_10.2.2_amd64.deb
+sudo dpkg -i grafana_10.2.2_amd64.deb
+```
+
+Включаем автозапуск и запускаем сервер Grafana
+
+```
+systemctl enable grafana-server.service
+systemctl start grafana-server.service
+systemctl status grafana-server.service
+```
+Адресс Входа в Grafana
+
+```
+http://192.168.0.15:3000
+admin
+admin
+```
+
+![grafana_user_profile](img/grafana-user-profile.png)
+
+Интеграция Grafana и Prometheus
+
+```
+Home > Connections > Data sourses > Add data sourse > Prometheus
+Prometheus > Connection (http://localhost:9090) > Save and test
+![prometheus_status_targets](img/prometheus-status-targets.png)
+```
+Подключаем дашборд
+
+Home > Dashboard > New (Import) > "1860" > Load > Prometheus > Import
+
+![grafana_dashboard](img/grafana-dashboard.png)
