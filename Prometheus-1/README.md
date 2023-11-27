@@ -242,7 +242,7 @@ Prometheus > Connection (http://localhost:9090) > Save and test
 
 Home > Dashboard > New (Import) > "1860" > Load > Prometheus > Import
 
-![grafana_dashboard_1860](img/grafana-dashboard_1860.png)
+![grafana_dashboard_1860](img/grafana-dashboard-1860.png)
 
 ---
 
