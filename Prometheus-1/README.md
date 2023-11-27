@@ -118,8 +118,65 @@ chown prometheus:prometheus -R /etc/prometheus/node-exporter
 Создаем сервис Node Exporter
 ```
 nano /etc/systemd/system/node-exporter.service
+```
+
+```
+[Unit]
+Description=Node Exporter Lesson 9.4 - Shafikov Rinat Riaziapovich
+After=network.target
+[Service]
+User=prometheus
+Group=prometheus
+Type=simple
+ExecStart=/etc/prometheus/node-exporter/node_exporter
+[Install]
+WantedBy=multi-user.target
+```
+
+Запуск сервиса Node Exporter
+
+```
 systemctl enable node-exporter.service
 systemctl start node-exporter.service
 systemctl status node-exporter.service
 ```
 ![node-exporter.service](img/status.node-exporter.service.png) 
+
+---
+
+# Задание 3
+
+### Подключите Node Exporter к серверу Prometheus.
+
+#### Процесс выполнения
+
+1. Выполняя ДЗ сверяйтесь с процессом отражённым в записи лекции.
+2. Отредактируйте prometheus.yaml, добавив в массив таргетов установленный в задании 2 node exporter
+3. Перезапустите prometheus
+4. Проверьте что он запустился
+
+#### Требования к результату
+Прикрепите к файлу README.md скриншот конфигурации из интерфейса Prometheus вкладки Status > Configuration
+Прикрепите к файлу README.md скриншот из интерфейса Prometheus вкладки Status > Targets, чтобы было видно минимум два эндпоинта
+
+# Решение 3
+
+Отредактируем файл prometheus.yml и добавим туда таргет для отслеживния
+
+```
+nano /etc/prometheus/prometheus.yml
+```
+```
+    static_configs:
+      - targets: ["localhost:9090", "localhost:9100"]
+```
+
+Перезапустим prometheus.service 
+
+```
+systemctl start prometheus.service
+systemctl status prometheus.service
+```
+
+![prometheus_conf](img/prometheus-status-configuratuion.png)
+![prometheus_status_targets](img/prometheus-status-targets.png)
