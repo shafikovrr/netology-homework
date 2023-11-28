@@ -182,8 +182,6 @@ systemctl start node-exporter.service
 systemctl status node-exporter.service
 ```
 
-
-
 ---
 
 # Задание 3
@@ -196,8 +194,76 @@ systemctl status node-exporter.service
 
 # Решение 3
 
+Установка Docker
 
+```
+sudo apt-get update
+sudo apt-get install ca-certificates curl gnupg
+sudo install -m 0755 -d /etc/apt/keyrings
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+sudo chmod a+r /etc/apt/keyrings/docker.gpg
+```
+```
+echo   "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
+  $(. /etc/os-release && echo "$VERSION_CODENAME") stable" |   sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+```
+```
+sudo apt-get update
+sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+```
+Автозапуск Docker, старт и статус
 
+```
+systemctl enable docker
+systemctl start docker
+systemctl status docker
+```
+
+Чтобы включить выгрузку данных на хосте с Docker, нужно создать файл daemon.json
+
+```
+nano /etc/docker/daemon.json
+```
+
+```
+{
+ "metrics-addr" : "0.0.0.0:9323", #0.0.0.0 - подключение со всех хостов
+ "experimental" : true
+}
+```
+Рестарт Docker, статус
+
+```
+systemctl restart docker
+systemctl status docker
+```
+Чтобы поставить только что организованный эндпоинт на мониторинг, необходимо отредактировать файл prometheus.yml ("192.168.0.15:9323")
+
+```
+nano /etc/prometheus/prometheus.yml 
+```
+
+```
+    static_configs:
+      - targets: ["localhost:9090", "192.168.0.15:9100", "192.168.0.15:9323"]
+```
+
+Рестарт prometheus, статус
+
+```
+systemctl restart prometheus
+systemctl status prometheus
+``` 
+
+```http://192.168.0.15:9323/metrics```
+
+![alertmanager4](img/endpoint.png)
+
+```
+http://192.168.0.15:9090/targets
+```
+
+![alertmanager5](img/targets.png)
 
 ---
 
@@ -210,3 +276,23 @@ systemctl status node-exporter.service
 Приложите скриншот, на котором будет дашборд Grafana с действующей метрикой
 
 # Решение 4
+
+```
+http://192.168.0.15:3000
+```
+
+Home>Dashboards>New (New Dashboard)>Add visualization>Prometheus
+
+CPU Utilization
+
+```
+avg without(cpu) (irate(node_cpu_seconds_total{job="prometheus", instance="192.168.0.15:9100", mode!="idle"}[1m]))
+```
+
+Docker
+
+```
+engine_daemon_container_states_containers{job="prometheus"}
+```
+
+![dashboard](img/cpu-and-docker.png)
