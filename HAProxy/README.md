@@ -77,5 +77,5 @@ sudo systemctl reload haproxy
 
 [Конфигурационный файл HaProxy](https://github.com/shafikovrr/HAProxy/blob/main/haproxy.cfg)
 
-![1hsrp](https://github.com/shafikovrr/disaster_recovery_and_keepalived/blob/main/img/1hsrp.png)
+![HaProxy_L4](https://github.com/shafikovrr/HAProxy/blob/main/img/HaProxy_L4.png)
 
