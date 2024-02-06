@@ -5,6 +5,9 @@
 3. Настройте балансировку Round-robin на 4 уровне.
 4. На проверку направьте конфигурационный файл haproxy, скриншоты, где видно перенаправление запросов на разные серверы при обращении к HAProxy.
 
+Решение
+
+1. Запустите два simple python сервера на своей виртуальной машине на разных портах
 ```
 mkdir http1
 cd http1
@@ -29,13 +32,14 @@ Server 2 :9999
 python3 -m http.server 9999 --bind 0.0.0.0
 ```
 
-
+2 Установите и настройте HAProxy, воспользуйтесь материалами к лекции по ссылке
 ```
 sudo apt install nginx
 curl http://localhost
 sudo apt install haproxy
 sudo nano /etc/haproxy/haproxy.cfg
 ```
+3 Настройте балансировку Round-robin на 4 уровне.
 
 ```
 listen stats # веб-страница со статистикой
@@ -69,6 +73,8 @@ listen web_tcp
 ```
 sudo systemctl reload haproxy
 ```
+4 На проверку направьте конфигурационный файл haproxy, скриншоты, где видно перенаправление запросов на разные серверы при обращении к HAProxy.
+
 [Конфигурационный файл HaProxy](https://github.com/shafikovrr/HAProxy/blob/main/haproxy.cfg)
 
 ![1hsrp](https://github.com/shafikovrr/disaster_recovery_and_keepalived/blob/main/img/1hsrp.png)
