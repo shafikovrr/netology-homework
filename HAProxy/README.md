@@ -69,7 +69,7 @@ listen web_tcp
 ```
 sudo systemctl reload haproxy
 ```
+[Конфигурационный файл Hproxy](https://github.com/shafikovrr/disaster_recovery_and_keepalived/blob/main/check.sh)
 
-
-
+![1hsrp](https://github.com/shafikovrr/disaster_recovery_and_keepalived/blob/main/img/1hsrp.png)
 
