@@ -24,3 +24,15 @@ rsync -av --checksum --delete --exclude=".*/" /home/rinat/home/ /tmp/backup
 3. Резервная копия должна создаваться раз в день, в системном логе должна появляться запись об успешном или неуспешном выполнении операции
 4. Резервная копия размещается локально, в директории /tmp/backup
 5. На проверку направить файл crontab и скриншот с результатом работы утилиты.
+
+```
+#!/bin/bash
+
+rsync -av --checksum --delete /home/rinat/home/ /tmp/backup/ > /var/log/rsync-backup.log 2>&1
+
+if [ $? -eq 0 ]; then
+    echo "[$(date)] Резервное копирование выполнено успешно" >> /var/log/rsync-backup.log
+else
+    echo "[$(date)] Резервное копирование не выполнено" >> /var/log/rsync-backup.log
+fi
+```
