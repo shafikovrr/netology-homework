@@ -36,3 +36,5 @@ else
     echo "[$(date)] Резервное копирование не выполнено" >> /var/log/rsync-backup.log
 fi
 ```
+
+![Rsync_2](https://github.com/shafikovrr/rsync/blob/main/img/rsync_2.png)
