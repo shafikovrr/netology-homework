@@ -36,6 +36,10 @@ else
     echo "[$(date)] Резервное копирование не выполнено" >> /var/log/rsync-backup.log
 fi
 ```
-[Конфигурационный файл crontab](https://github.com/shafikovrr/HAProxy/blob/main/rinat)
+```
+sudo cat /var/spool/cron/crontabs/rinat
+```
+
+[Конфигурационный файл crontab](https://github.com/shafikovrr/rsync/blob/main/rinat)
 
 ![Rsync_2](https://github.com/shafikovrr/rsync/blob/main/img/rsync_2.png)
