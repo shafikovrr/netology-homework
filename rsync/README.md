@@ -58,6 +58,6 @@ fi
 3. На проверку направьте команду и результат ее выполнения в виде скриншота
 
 ```
-rsync -av --delete --bwlimit=1024 --info=progress2 adrin@192.168.0.60:/home/adrin/Packet_Tracer821_amd64_signed.deb adrin@192.168.0.69:/home/adrin/backup/
+rsync -av --delete --bwlimit=1024 --info=progress2 /home/adrin/Packet_Tracer821_amd64_signed.deb adrin@192.168.0.69:/home/adrin/backup/
 ```
 ![Rsync_2](https://github.com/shafikovrr/rsync/blob/main/img/rsync_3.png)
