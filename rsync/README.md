@@ -14,6 +14,8 @@ rsync -av --checksum --delete --exclude=".*/" /home/rinat/home/ /tmp/backup
 ```
 ![Rsync_1](https://github.com/shafikovrr/rsync/blob/main/img/rsync_1.png)
 
+---
+
 ### Задача 2
 
 1. Написать скрипт и настроить задачу на регулярное резервное копирование домашней директории пользователя с помощью rsync и cron.
@@ -47,6 +49,15 @@ fi
 
 ![Rsync_2](https://github.com/shafikovrr/rsync/blob/main/img/rsync_2.png)
 
+---
+
+### Задание 3
+
+1. Настройте ограничение на используемую пропускную способность rsync до 1 Мбит/c
+2. Проверьте настройку, синхронизируя большой файл между двумя серверами
+3. На проверку направьте команду и результат ее выполнения в виде скриншота
+
 ```
 rsync -av --delete --bwlimit=1024 --info=progress2 adrin@192.168.0.60:/home/adrin/Packet_Tracer821_amd64_signed.deb adrin@192.168.0.69:/home/adrin/backup/
 ```
+![Rsync_2](https://github.com/shafikovrr/rsync/blob/main/img/rsync_3.png)
