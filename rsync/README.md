@@ -46,3 +46,7 @@ fi
 [Конфигурационный файл crontab](https://github.com/shafikovrr/rsync/blob/main/rinat)
 
 ![Rsync_2](https://github.com/shafikovrr/rsync/blob/main/img/rsync_2.png)
+
+```
+rsync -av --delete --bwlimit=1024 --info=progress2 adrin@192.168.0.60:/home/adrin/Packet_Tracer821_amd64_signed.deb adrin@192.168.0.69:/home/adrin/backup/
+```
