@@ -42,6 +42,18 @@ sudo systemctl status memceched
 
 ### Решение 3
 
+```
+telnet localhost 11211
+```
+```
+add key 0 5 1
+```
+```
+get key
+```
+
+![del ttl](https://github.com/shafikovrr/Redis_memcached/blob/main/img/del_ttl.png)
+
 ---
 
 ### Задание 4. Запись данных в Redis
