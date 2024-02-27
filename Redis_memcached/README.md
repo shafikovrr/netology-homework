@@ -26,6 +26,9 @@ sudo apt update && sudo apt upgrade
 ```
 sudo apt install memcached
 ```
+```
+sudo systemctl status memceched
+```
 ![Статус memcached](https://github.com/shafikovrr/Redis_memcached/blob/main/img/status_memcached.png)
 
 ---
