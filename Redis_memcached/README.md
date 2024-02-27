@@ -72,13 +72,17 @@ sudo apt update && sudo apt upgrade
 sudo apt install redis
 ```
 ```
-set key5 5
+set name rinat
+set age 42
+set city ufa
 ```
 ```
 keys *
 ```
 ```
-get key5
+get city
+get age
+get name
 ```
 
 ![redis_add_view](https://github.com/shafikovrr/Redis_memcached/blob/main/img/redis_add_view.png)
@@ -92,19 +96,30 @@ get key5
 Приведите скриншот, где будут проделаны все операции и будет видно, что значение key5 стало равно 10.
 
 ### Решение 5
+
+Выбор логической базы данных с индексом 10
 ```
 select 10
 ```
+Создание ячейки key5 со значением 5
 ```
 set key5 5
 ```
+Вывод списка ключей
 ```
 keys *
 ```
+Вывод значения ключа key5
 ```
 get key5
 ```
+Увеличение значения ключа key5 на 5
 ```
 incrby key5 5
 ```
+Вывод значения ключа key5
+```
+get key5
+```
+
 ![redis_incrby](https://github.com/shafikovrr/Redis_memcached/blob/main/img/redis_incrby.png)
