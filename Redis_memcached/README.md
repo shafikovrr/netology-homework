@@ -71,6 +71,17 @@ sudo apt update && sudo apt upgrade
 ```
 sudo apt install redis
 ```
+```
+set key5 5
+```
+```
+keys *
+```
+```
+get key5
+```
+
+![redis_add_view](https://github.com/shafikovrr/Redis_memcached/blob/main/img/redis_add_view.png)
 
 ---
 
@@ -81,3 +92,19 @@ sudo apt install redis
 Приведите скриншот, где будут проделаны все операции и будет видно, что значение key5 стало равно 10.
 
 ### Решение 5
+```
+select 10
+```
+```
+set key5 5
+```
+```
+keys *
+```
+```
+get key5
+```
+```
+incrby key5 5
+```
+![redis_incrby](https://github.com/shafikovrr/Redis_memcached/blob/main/img/redis_incrby.png)
