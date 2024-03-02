@@ -42,8 +42,8 @@ write
 ```
 show standby brief
 ```
-![1hsrp](https://github.com/shafikovrr/disaster_recovery_and_keepalived/blob/main/img/1hsrp.png)
-![2hsrp](https://github.com/shafikovrr/disaster_recovery_and_keepalived/blob/main/img/2hsrp.png)
+![1hsrp](https://github.com/shafikovrr/disaster_recovery_keepalived/blob/main/img/1hsrp.png)
+![2hsrp](https://github.com/shafikovrr/disaster_recovery_keepalived/blob/main/img/2hsrp.png)
 
 ---
 
@@ -65,7 +65,7 @@ else
   exit 1
 fi
 ```
-[Bash-скрипт](https://github.com/shafikovrr/disaster_recovery_and_keepalived/blob/main/check.sh)
+[Bash-скрипт](https://github.com/shafikovrr/disaster_recovery_keepalived/blob/main/check.sh)
 
 Конфигурационный файл keepalived MASTER (srv1 192.168.0.60)
 ```
@@ -94,7 +94,7 @@ vrrp_instance VI_1 {
                 }
 }
 ```
-[Конфигурационный файл keepalived MASTER (srv1 192.168.0.60)](https://github.com/shafikovrr/disaster_recovery_and_keepalived/blob/main/keepalived.conf)
+[Конфигурационный файл keepalived MASTER (srv1 192.168.0.60)](https://github.com/shafikovrr/disaster_recovery_keepalived/blob/main/keepalived.conf)
 
 Конфигурационный файл keepalived BACKUP (srv2 192.168.0.94)
 ```
@@ -121,8 +121,8 @@ vrrp_instance VI_1 {
 }
 ```
 ---
-![1keepalived_check](https://github.com/shafikovrr/disaster_recovery_and_keepalived/blob/main/img/1keepalived_check.png)
-![2keepalived_check](https://github.com/shafikovrr/disaster_recovery_and_keepalived/blob/main/img/2keepalived_check.png)
+![1keepalived_check](https://github.com/shafikovrr/disaster_recovery_keepalived/blob/main/img/1keepalived_check.png)
+![2keepalived_check](https://github.com/shafikovrr/disaster_recovery_keepalived/blob/main/img/2keepalived_check.png)
 
 ```
 sudo apt update && sudo apt upgrade -y
