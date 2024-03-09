@@ -8,7 +8,7 @@
 ### Решение 1
 
 ```
-rabbitmqctl add_user adrin password
+sudo rabbitmqctl add_user adrin password
 sudo rabbitmqctl set_permissions -p / adrin ".*" ".*" ".*"
 sudo rabbitmqctl set_user_tags adrin administrator
 ```
