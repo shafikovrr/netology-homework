@@ -72,7 +72,24 @@ sudo rabbitmqctl set_user_tags adrin administrator
 
 ### Решение 2
 
-![Название скриншота 2](ссылка на скриншот 2)`
+Измененный файл producer.py
+
+```
+#!/usr/bin/env python
+# coding=utf-8
+import pika
+credentials = pika.PlainCredentials('adrin', 'password')
+connection = pika.BlockingConnection(pika.ConnectionParameters('192.168.56.100',
+                                                            5672,
+                                                            '/',
+                                                            credentials))
+channel = connection.channel()
+channel.queue_declare(queue='hello')
+channel.basic_publish(exchange='', routing_key='hello', body='Hello Netology!')
+connection.close()
+```
+
+![rabbitmq_hello](img/rabbitmq_hello.png)
 
 
 ---
