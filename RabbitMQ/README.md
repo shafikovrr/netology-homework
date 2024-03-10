@@ -7,6 +7,42 @@
 
 ### Решение 1
 
+Vagrant файл
+```
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+Vagrant.configure("2") do |config|
+  config.vm.box = "ubuntu/jammy64"
+  config.vm.network "private_network", ip: "192.168.56.100"
+  config.vm.disk :disk, size: "20GB", primary: true
+  config.vm.provider "virtualbox" do |vb|
+    vb.name = "rabbitmq"
+    vb.gui = false
+    vb.memory = "6144"
+    vb.cpus = "2"
+end
+config.vm.hostname = "rabbitmq"
+config.vm.network :forwarded_port, guest: 5672, host: 5672
+config.vm.network :forwarded_port, guest: 15672, host: 15672
+
+  config.vm.provision "shell", inline: <<-SHELL
+    export DEBIAN_FRONTEND=noninteractive
+    sudo apt update
+    sudo apt upgrade
+    sudo apt install openssh-server 
+    sudo apt install rabbitmq-server -y
+    sudo systemctl start rabbitmq-server
+    sudo systemctl enable rabbitmq-server
+    sudo rabbitmq-plugins enable rabbitmq_management
+    sudo systemctl restart rabbitmq-server
+    sudo ufw allow ssh
+    sudo ufw enable
+    sudo ufw allow 5672,15672,4369,25672/tcp
+    echo -e "192.168.56.100\tubuntu-jammy\tubuntu-jammy" >> /etc/hosts
+  SHELL
+end
+```
+Установка системы и настройка доступа пользователя
 ```
 vagrant up
 vagrant ssh
@@ -15,7 +51,7 @@ sudo rabbitmqctl set_permissions -p / adrin ".*" ".*" ".*"
 sudo rabbitmqctl set_user_tags adrin administrator
 ```
 
-![Название скриншота 1](ссылка на скриншот 1)
+![rabbitmq_install](img/rabbitmq_install.png)
 
 ---
 
