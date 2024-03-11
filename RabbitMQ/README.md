@@ -29,15 +29,11 @@ config.vm.network :forwarded_port, guest: 15672, host: 15672
     export DEBIAN_FRONTEND=noninteractive
     sudo apt update
     sudo apt upgrade
-    sudo apt install openssh-server 
     sudo apt install rabbitmq-server -y
     sudo systemctl start rabbitmq-server
     sudo systemctl enable rabbitmq-server
     sudo rabbitmq-plugins enable rabbitmq_management
     sudo systemctl restart rabbitmq-server
-    sudo ufw allow ssh
-    sudo ufw enable
-    sudo ufw allow 5672,15672,4369,25672/tcp
     echo -e "192.168.56.100\tubuntu-jammy\tubuntu-jammy" >> /etc/hosts
   SHELL
 end
@@ -181,9 +177,6 @@ Vagrant.configure("2") do |config|
       sudo rabbitmqctl add_user adrin password_rmq01
       sudo rabbitmqctl set_permissions -p / adrin ".*" ".*" ".*"
       sudo rabbitmqctl set_user_tags adrin administrator
-      sudo ufw allow ssh
-      sudo ufw enable
-      sudo ufw allow 5672,15672,4369,25672/tcp
       echo -e "192.168.56.100\trmq01\trmq01" >> /etc/hosts
       echo -e "192.168.56.200\turmq02\trmq02" >> /etc/hosts
       sudo cp /var/lib/rabbitmq/.erlang.cookie /vagrant/
@@ -213,9 +206,6 @@ Vagrant.configure("2") do |config|
         sudo rabbitmqctl add_user adrin password_rmq02
         sudo rabbitmqctl set_permissions -p / adrin ".*" ".*" ".*"
         sudo rabbitmqctl set_user_tags adrin administrator
-        sudo ufw allow ssh
-        sudo ufw enable
-        sudo ufw allow 5672,15672,4369,25672/tcp
         echo -e "192.168.56.100\trmq01\trmq01" >> /etc/hosts
         echo -e "192.168.56.200\trmq02\trmq02" >> /etc/hosts
         sudo cp /vagrant/.erlang.cookie /var/lib/rabbitmq/
@@ -355,7 +345,9 @@ Flag: virtual_host_metadata, state: enabled
 
 ![get_queue_rmq02](img/get_queue_rmq02.png)
 
+Остановка rmq01
 
+![stop_rmq01](img/stop_rmq01.png)
 
 
 
