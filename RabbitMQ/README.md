@@ -349,8 +349,11 @@ Flag: user_limits, state: enabled
 Flag: virtual_host_metadata, state: enabled
 ```
 
+Вывод команды rabbitmqadmin get queue='shafikov'
 
+![get_queue_rmq01](img/get_queue_rmq01.png)
 
+![get_queue_rmq02](img/get_queue_rmq02.png)
 
 
 
