@@ -149,7 +149,7 @@ rabbitmqadmin get queue='hello'
 
 ### Решение 3
 
-Vagrant файл
+#### Vagrant файл
 
 ```
 Vagrant.configure("2") do |config|
@@ -224,7 +224,7 @@ Vagrant.configure("2") do |config|
 
 ![rabbitmq_ha-all](img/rabbitmq_ha-all.png)
 
-Вывод команды rabbitmqctl cluster_status на rabbit@rmq01
+#### Вывод команды rabbitmqctl cluster_status на rabbit@rmq01
 
 ```
 sudo rabbitmqctl cluster_status
@@ -281,7 +281,7 @@ Flag: stream_queue, state: enabled
 Flag: user_limits, state: enabled
 Flag: virtual_host_metadata, state: enabled
 ```
-Вывод команды rabbitmqctl cluster_status на rabbit@rmq02
+#### Вывод команды rabbitmqctl cluster_status на rabbit@rmq02
 
 ```
 sudo rabbitmqctl cluster_status
@@ -339,7 +339,7 @@ Flag: user_limits, state: enabled
 Flag: virtual_host_metadata, state: enabled
 ```
 
-Вывод команды rabbitmqadmin get queue='shafikov'
+#### Вывод команды rabbitmqadmin get queue='shafikov'
 
 ![get_queue_rmq01](img/get_queue_rmq01.png)
 
@@ -349,16 +349,39 @@ Flag: virtual_host_metadata, state: enabled
 
 ![stop_rmq01](img/stop_rmq01.png)
 
+#### producer.py
+
+```
+#!/usr/bin/env python
+# coding=utf-8
+import pika
+
+credentials = pika.PlainCredentials('adrin', 'password_rmq01')
+connection = pika.BlockingConnection(pika.ConnectionParameters('192.168.56.100', 5672, '/', credentials))
+channel = connection.channel()
+channel.queue_declare(queue='shafikov')
+channel.basic_publish(exchange='', routing_key='shafikov', body='Hello Shafikov!')
+connection.close()
+```
+#### consumer.py
+
+```
+#!/usr/bin/env python
+# coding=utf-8
+import pika
+credentials = pika.PlainCredentials('adrin', 'password_rmq01')
+connection = pika.BlockingConnection(pika.ConnectionParameters('192.168.56.200', 5672, '/', credentials))
+channel = connection.channel()
+channel.queue_declare(queue='shafikov')
 
 
----
+def callback(ch, method, properties, body):
+    print(" [x] Received %r" % body)
 
-### Задание 4. Ansible playbook
 
-Напишите плейбук, который будет производить установку RabbitMQ на любое количество нод и объединять их в кластер. При этом будет автоматически создавать политику ha-all.
-
-Готовый плейбук разместите в своём репозитории.
-
-### Решение 4
+# channel.basic_consume(callback, queue='shafikov', no_ack=True)
+channel.basic_consume('shafikov', callback, auto_ack=True)
+channel.start_consuming()
+```
 
 ---
