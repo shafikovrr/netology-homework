@@ -237,7 +237,7 @@ Vagrant.configure("2") do |config|
 Вывод команды rabbitmqctl cluster_status на rabbit@rmq01
 
 ```
-sudo  rabbitmqctl cluster_status
+sudo rabbitmqctl cluster_status
 Cluster status of node rabbit@rmq01 ...
 Basics
 
@@ -291,6 +291,69 @@ Flag: stream_queue, state: enabled
 Flag: user_limits, state: enabled
 Flag: virtual_host_metadata, state: enabled
 ```
+Вывод команды rabbitmqctl cluster_status на rabbit@rmq02
+
+```
+sudo rabbitmqctl cluster_status
+Cluster status of node rabbit@rmq02 ...
+Basics
+
+Cluster name: rabbit@rmq02
+
+Disk Nodes
+
+rabbit@rmq01
+rabbit@rmq02
+
+Running Nodes
+
+rabbit@rmq01
+rabbit@rmq02
+
+Versions
+
+rabbit@rmq01: RabbitMQ 3.9.13 on Erlang 24.2.1
+rabbit@rmq02: RabbitMQ 3.9.13 on Erlang 24.2.1
+
+Maintenance status
+
+Node: rabbit@rmq01, status: not under maintenance
+Node: rabbit@rmq02, status: not under maintenance
+
+Alarms
+
+(none)
+
+Network Partitions
+
+(none)
+
+Listeners
+
+Node: rabbit@rmq01, interface: [::], port: 15672, protocol: http, purpose: HTTP API
+Node: rabbit@rmq01, interface: [::], port: 25672, protocol: clustering, purpose: inter-node and CLI tool communication
+Node: rabbit@rmq01, interface: [::], port: 5672, protocol: amqp, purpose: AMQP 0-9-1 and AMQP 1.0
+Node: rabbit@rmq02, interface: [::], port: 15672, protocol: http, purpose: HTTP API
+Node: rabbit@rmq02, interface: [::], port: 25672, protocol: clustering, purpose: inter-node and CLI tool communication
+Node: rabbit@rmq02, interface: [::], port: 5672, protocol: amqp, purpose: AMQP 0-9-1 and AMQP 1.0
+
+Feature flags
+
+Flag: drop_unroutable_metric, state: disabled
+Flag: empty_basic_get_metric, state: disabled
+Flag: implicit_default_bindings, state: enabled
+Flag: maintenance_mode_status, state: enabled
+Flag: quorum_queue, state: enabled
+Flag: stream_queue, state: enabled
+Flag: user_limits, state: enabled
+Flag: virtual_host_metadata, state: enabled
+```
+
+
+
+
+
+
 
 
 ---
