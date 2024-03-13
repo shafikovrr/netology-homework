@@ -45,37 +45,37 @@
 #### Таблица 1
 
 Фамилия (
-id, auto_increment, serial,
+id, auto_increment,
 фамилия varchar(25))
 
 #### Таблица 2
 
 Имя (
-id, auto_increment, serial,
+id, auto_increment,
 имя varchar(20))
 
 #### Таблица 3
 
 Отчество (
-id, auto_increment, serial,
+id, auto_increment,
 отчество varchar(25))
 
 #### Таблица 4
 
 Дата найма (
-id, auto_increment, serial,
+id, auto_increment,
 дата DATE)
 
 #### Таблица 5
 
 Оклад (
-id, auto_increment, serial,
+id, auto_increment,
 оклад DECIMAL/NUMERIC)
 
 #### Таблица 6
 
 Должность (
-id, auto_increment, serial,
+id, auto_increment,
 должность varchar(25))
 
 #### Таблица 7
