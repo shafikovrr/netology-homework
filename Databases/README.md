@@ -43,72 +43,72 @@
 - Проект на который назначен TEXT
 
 #### Таблица 1 Сотрудники
-
+```
 Worker (
 worker_id    INT NOT NULL  SERIAL  PRIMARY KEY
 first_name   varchar(25) NOT NULL
 last_name    varchar(25) NOT NULL
 middle_name, varchar(25)) NOT NULL
 );
-
+```
 #### Таблица 2 Оклад
-
+```
 salary (
 salary_id      INT  NOT NULL  SERIAL  PRIMARY KEY
 salary_amount  NUMERIC) NOT NULL
 );
-
+```
 #### Таблица 3 Дата найма
-
+```
 Date of employment (
 date_employment_id  INT  NOT NULL  SERIAL  PRIMARY KEY
 data                DATE)  NOT NULL
 );
-
+```
 #### Таблица 4 Должность
-
+```
 Post (
 post_id        INT  NOT NULL  SERIAL  PRIMARY KEY
 post_name      varchar(50)  NOT NULL
 );
-
+```
 #### Таблица 5 Тип подразделения
-
+```
 type_division (
 division_id,     INT  NOT NULL  SERIAL  PRIMARY KEY
 должность        varchar(25)  NOT NULL
 );
-
+```
 #### Таблица 6 Структурное подразделение
-
+```
 structural_division (
 structural_division_id    INT  NOT NULL  SERIAL  PRIMARY KEY
 structural_division_name varchar(50)  NOT NULL
 );
-
+```
 #### Таблица 7 Административно территориальная единица
-
+```
 ATE (
 ate_id,     INT  INT NOT  SERIAL SERIAL  PRIMARY KEY
 ate_name    varchar(50) NOT NULL
 );
-
+```
 #### Таблица 8 Город
-
+```
 city (
 city_id,     INT  NOT NULL  SERIAL  PRIMARY KEY
 ate_name    varchar(50)  NOT NULL
 );
-
+```
 #### Таблица 9 Улица
-
+```
 streat (
 streat_id,     INT  NOT NULL  SERIAL  PRIMARY KEY
 streat_name    varchar(50)  NOT NULL
 );
-
+```
 #### Таблица 9 Адрес подразделения
-
+```
 address of the department (
 address_department_id,     INT  NOT NULL  SERIAL  PRIMARY KEY
 ate_id,                    INT  NOT NULL  integer 
@@ -120,15 +120,15 @@ FOREIGN KEY (ate_id) REFERENCES ate(id),
 FOREIGN KEY (city_id) REFERENCES city(id),
 FOREIGN KEY (street_id) REFERENCES street(id)
 );
-
+```
 
 #### Таблица 9 Проект
-
+```
 project (
 project_id,     INT  NOT NULL  PRIMARY KEY
 project_name    VARCHAR(100)  NOT NULL
 );
-
+```
 ---
 
 ### Задание 2
