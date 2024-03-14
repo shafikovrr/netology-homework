@@ -42,48 +42,92 @@
 - Адрес филиала	TEXT
 - Проект на который назначен TEXT
 
-#### Таблица 1
+#### Таблица 1 Сотрудники
 
-Фамилия (
-id, auto_increment,
-фамилия varchar(25))
+Worker (
+worker_id    INT NOT NULL  SERIAL  PRIMARY KEY
+first_name   varchar(25) NOT NULL
+last_name    varchar(25) NOT NULL
+middle_name, varchar(25)) NOT NULL
+);
 
-#### Таблица 2
+#### Таблица 2 Оклад
 
-Имя (
-id, auto_increment,
-имя varchar(20))
+salary (
+salary_id      INT  NOT NULL  SERIAL  PRIMARY KEY
+salary_amount  NUMERIC) NOT NULL
+);
 
-#### Таблица 3
+#### Таблица 3 Дата найма
 
-Отчество (
-id, auto_increment,
-отчество varchar(25))
+Date of employment (
+date_employment_id  INT  NOT NULL  SERIAL  PRIMARY KEY
+data                DATE)  NOT NULL
+);
 
-#### Таблица 4
+#### Таблица 4 Должность
 
-Дата найма (
-id, auto_increment,
-дата DATE)
+Post (
+post_id        INT  NOT NULL  SERIAL  PRIMARY KEY
+post_name      varchar(50)  NOT NULL
+);
 
-#### Таблица 5
+#### Таблица 5 Тип подразделения
 
-Оклад (
-id, auto_increment,
-оклад DECIMAL/NUMERIC)
+type_division (
+division_id,     INT  NOT NULL  SERIAL  PRIMARY KEY
+должность        varchar(25)  NOT NULL
+);
 
-#### Таблица 6
+#### Таблица 6 Структурное подразделение
 
-Должность (
-id, auto_increment,
-должность varchar(25))
+structural_division (
+structural_division_id    INT  NOT NULL  SERIAL  PRIMARY KEY
+structural_division_name varchar(50)  NOT NULL
+);
 
-#### Таблица 7
+#### Таблица 7 Административно территориальная единица
 
-Город (
-id, auto_increment,
-город varchar(25))
+ATE (
+ate_id,     INT  INT NOT  SERIAL SERIAL  PRIMARY KEY
+ate_name    varchar(50) NOT NULL
+);
 
+#### Таблица 8 Город
+
+city (
+city_id,     INT  NOT NULL  SERIAL  PRIMARY KEY
+ate_name    varchar(50)  NOT NULL
+);
+
+#### Таблица 9 Улица
+
+streat (
+streat_id,     INT  NOT NULL  SERIAL  PRIMARY KEY
+streat_name    varchar(50)  NOT NULL
+);
+
+#### Таблица 9 Адрес подразделения
+
+address of the department (
+address_department_id,     INT  NOT NULL  SERIAL  PRIMARY KEY
+ate_id,                    INT  NOT NULL  integer 
+city_id,                   INT  NOT NULL  integer  
+streat_id                  INT  NOT NULL  integer 
+house_number               VARCHAR(10)  NOT NULL
+
+FOREIGN KEY (ate_id) REFERENCES ate(id),
+FOREIGN KEY (city_id) REFERENCES city(id),
+FOREIGN KEY (street_id) REFERENCES street(id)
+);
+
+
+#### Таблица 9 Проект
+
+project (
+project_id,     INT  NOT NULL  PRIMARY KEY
+project_name    VARCHAR(100)  NOT NULL
+);
 
 ---
 
