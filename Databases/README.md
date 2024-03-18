@@ -76,7 +76,7 @@ post_name      varchar(50)  NOT NULL
 ```
 type_division (
 division_id,     INT  NOT NULL  SERIAL  PRIMARY KEY
-должность        varchar(25)  NOT NULL
+division         varchar(25)  NOT NULL
 );
 ```
 #### Таблица 6 Структурное подразделение
@@ -97,7 +97,7 @@ ate_name    varchar(50) NOT NULL
 ```
 city (
 city_id,     INT  NOT NULL  SERIAL  PRIMARY KEY
-ate_name    varchar(50)  NOT NULL
+city_name    varchar(50)  NOT NULL
 );
 ```
 #### Таблица 9 Улица
