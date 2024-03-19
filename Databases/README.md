@@ -43,11 +43,25 @@
 - Проект на который назначен TEXT
 
 #### Таблица 1 Сотрудники
+
+Сотрудники (
+  идентификатор, первичный ключ, тип INT, обязателен для заполнения, AUTO_INCREMENT (значение столбца будет автоматически увеличиваться при добавлении новой строки) 
+  фамилия, тип VARCHAR(строка переменной длины, максимальная длинна 50 символов), обязательна для заполнения
+  имя, тип VARCHAR(максимальная длинна 50 символов), обязательна для заполнения
+  фамилия, тип VARCHAR(максимальная длинна 50 символов), обязательна для заполнения
+  идентификатор даты приема на работу, внешний ключ, int (целое число)
+  идентификатор оклада, внешний ключ, int (целое число)
+  идентификатор должности, внешний ключ, int (целое число)
+  идентификатор структурного подразделения, внешний ключ, int (целое число)
+  идентификатор адреса структурного подразделения, внешний ключ, int (целое число)
+  идентификатор типа подразделения, внешний ключ, int (целое число)
+)
+
 ```
 CREATE TABLE `Worker` (
   `worker_id` int(11) NOT NULL AUTO_INCREMENT,
   `first_name` varchar(50) NOT NULL,
-  `last_name` varchar(100) NOT NULL,
+  `last_name` varchar(50) NOT NULL,
   `middle_name` varchar(50) NOT NULL,
   `date_employment_id` int(11) NOT NULL,
   `salary_id` int(11) NOT NULL,
@@ -73,7 +87,14 @@ CREATE TABLE `Worker` (
   CONSTRAINT `Worker_Type_of_division_FK` FOREIGN KEY (`division_id`) REFERENCES `Type_of_division` (`division_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 ```
+
 #### Таблица 2 Оклад
+
+Оклад (
+  идентификатор, первичный ключ, тип INT, обязателен для заполнения
+  оклад, тип decimal(дробное число, хранящееся в виде строки), обязательна для заполнения
+ )
+
 ```
 CREATE TABLE `Salary` (
   `salary_id` int(11) NOT NULL AUTO_INCREMENT,
@@ -81,7 +102,14 @@ CREATE TABLE `Salary` (
   PRIMARY KEY (`salary_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 ```
+
 #### Таблица 3 Дата найма
+
+Дата найма (
+  идентификатор, первичный ключ, тип INT, обязателен для заполнения
+  дата, тип data ( хранит значения даты в виде ГГГГ-ММ-ДД.), обязательна для заполнения
+)
+
 ```
 CREATE TABLE `Date_of_employment` (
   `date_employment_id` int(11) NOT NULL AUTO_INCREMENT,
@@ -89,7 +117,14 @@ CREATE TABLE `Date_of_employment` (
   PRIMARY KEY (`date_employment_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 ```
+
 #### Таблица 4 Должность
+
+Должность (
+  идентификатор должности, первичный ключ, тип INT, обязателен для заполнения
+  назване должности, тип VARCHAR(строка переменной длины, максимальная длинна 100 символов), обязательна для заполнения
+)
+
 ```
 CREATE TABLE `Post` (
   `post_id` int(11) NOT NULL AUTO_INCREMENT,
@@ -97,7 +132,14 @@ CREATE TABLE `Post` (
   PRIMARY KEY (`post_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 ```
+
 #### Таблица 5 Тип подразделения
+
+Тип подразделения (
+  идентификатор типа подразделения, первичный ключ, тип INT, обязателен для заполнения
+  назване типа подразделения, тип VARCHAR(строка переменной длины, максимальная длинна 100 символов), обязательна для заполнения
+)
+
 ```
 CREATE TABLE `Type_of_division` (
   `division_id` int(11) NOT NULL AUTO_INCREMENT,
@@ -105,7 +147,14 @@ CREATE TABLE `Type_of_division` (
   PRIMARY KEY (`division_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 ```
+
 #### Таблица 6 Структурное подразделение
+
+Структурное подразделение (
+  идентификатор структурного подразделения, первичный ключ, тип INT, обязателен для заполнения
+  назване структурного подразделения, тип VARCHAR(строка переменной длины, максимальная длинна 100 символов), обязательна для заполнения
+)
+
 ```
 CREATE TABLE `Structural_division` (
   `structural_division_id` int(11) NOT NULL AUTO_INCREMENT,
@@ -113,7 +162,14 @@ CREATE TABLE `Structural_division` (
   PRIMARY KEY (`structural_division_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 ```
+
 #### Таблица 7 Административно территориальная единица
+
+Административно территориальная единица (
+  идентификатор административно территориально единицы, первичный ключ, тип INT, обязателен для заполнения, AUTO_INCREMENT (значение столбца будет автоматически увеличиваться при добавлении новой строки) 
+  назване административно территориальной единицы, тип VARCHAR(строка переменной длины, максимальная длинна 100 символов), обязательна для заполнения
+)
+
 ```
 CREATE TABLE `Administrative_territorial_unit` (
   `ate_id` int(11) NOT NULL AUTO_INCREMENT,
@@ -122,6 +178,12 @@ CREATE TABLE `Administrative_territorial_unit` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 ```
 #### Таблица 8 Город
+
+Город (
+  идентификатор города, первичный ключ, тип INT, обязателен для заполнения, AUTO_INCREMENT (значение столбца будет автоматически увеличиваться при добавлении новой строки) 
+  назване города, тип VARCHAR(строка переменной длины, максимальная длинна 100 символов), обязательна для заполнения
+)
+
 ```
 CREATE TABLE `City` (
   `city_id` int(11) NOT NULL,
@@ -130,6 +192,12 @@ CREATE TABLE `City` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 ```
 #### Таблица 9 Улица
+
+Улица (
+  идентификатор названия улицы, первичный ключ, тип INT, обязателен для заполнения, AUTO_INCREMENT (значение столбца будет автоматически увеличиваться при добавлении новой строки) 
+  назване улицы, тип VARCHAR(строка переменной длины, максимальная длинна 100 символов), обязательна для заполнения
+)
+
 ```
 CREATE TABLE `Streat` (
   `streat_id` int(11) NOT NULL AUTO_INCREMENT,
@@ -138,6 +206,15 @@ CREATE TABLE `Streat` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 ```
 #### Таблица 9 Адрес подразделения
+
+Адрес подразделения (
+  идентификатор адреса подразделения, первичный ключ, тип INT, обязателен для заполнения, AUTO_INCREMENT (значение столбца будет автоматически увеличиваться при добавлении новой строки) 
+  идентификатор административно территориальной единицы, внешний ключ, int (целое число)
+  идентификатор названия города, внешний ключ, int (целое число)
+  идентификатор названия улицы, внешний ключ, int (целое число)
+  идентификатор номера дома, varchar(10) (так как может содержать буквы - д. 2 корпус 1 и т.п.)
+)
+
 ```
 CREATE TABLE `Address_of_the_department` (
   `address_department_id` int(11) NOT NULL,
@@ -155,7 +232,15 @@ CREATE TABLE `Address_of_the_department` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 ```
 
-#### Таблица 9 Проект
+#### Таблица 10 Проект
+
+Проект (
+  идентификатор проекта, первичный ключ, тип INT, обязателен для заполнения, AUTO_INCREMENT (значение столбца будет автоматически увеличиваться при добавлении новой строки) 
+  назване проекта, тип VARCHAR(строка переменной длины, максимальная длинна 100 символов), обязательна для заполнения
+  идентификатор работника,  внешний ключ, int (целое число)
+  идентификатор структурного подразделения, внешний ключ, int (целое число)
+  )
+
 ```
 CREATE TABLE `Project` (
   `project_id` int(11) NOT NULL AUTO_INCREMENT,
