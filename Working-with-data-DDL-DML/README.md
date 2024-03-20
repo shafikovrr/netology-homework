@@ -56,7 +56,7 @@ Reload privilege tables now? (Press y|Y for Yes, any other key for No) : y
 
 2. `Создайте учётную запись sys_temp.`
 
-Создаем пользователя sys_temp (с правом доступа только с localhost, иначе 'sys_temp'@'%')
+Создаем пользователя sys_temp (с правом доступа только с localhost, иначе 'sys_temp'@'%' - для подключения через dbeaver переделал на 'sys_temp'@'%')
 
 ```
 mysql -u root -p
@@ -130,7 +130,22 @@ use sakila;
 show tables;
 ```
 
-![show_sakila_tables](img/show_sakila_tables.png)`
+![show_sakila_tables](img/show_sakila_tables.png)
+
+Для подключения к базе данных через dbeaver изменим файл
+
+```
+sudo nano /etc/mysql/mysql.conf.d/mysqld.cnf
+```
+```
+bind-address            = 0.0.0.0
+```
+```
+sudo systemctl restart mysql.service
+```
+
+
+![sakila_ER_Diagram](img/sakila_ER_Diagram.png)`
 
 ---
 
