@@ -126,7 +126,7 @@ mysql -p -h 127.0.0.1 -P 3306 -u sys_temp -p < sakila-db/sakila-data.sql
 ```
 mysql -u sys_temp -p
 show databases;
-use sakila
+use sakila;
 show tables;
 ```
 
