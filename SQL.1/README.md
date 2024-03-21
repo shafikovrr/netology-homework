@@ -23,8 +23,10 @@ SELECT DISTINCT district FROM address WHERE district LIKE 'K%a' and district not
 ### Решение 2
 
 ```
-Поле для вставки кода...
-
+SELECT payment_date, amount 
+FROM payment 
+WHERE amount > 10 AND payment_date BETWEEN '2005-06-14 23:59:59' AND '2005-06-18 23:59:59'
+ORDER BY payment_date ASC;
 ```
 
 ![*](img/*.png)
