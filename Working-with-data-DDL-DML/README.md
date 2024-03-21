@@ -186,6 +186,8 @@ film_list                    |
 store                        | store_id
 ```
 
+![sakila_ER_Diagram_PRI](img/sakila_ER_Diagram_PRI.png)
+
 ---
 
 ### Задание 3
