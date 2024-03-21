@@ -9,7 +9,9 @@
 ### Решение 1
 
 ```
-SELECT DISTINCT district FROM address WHERE district LIKE 'K%a' and district not LIKE '% %';
+SELECT DISTINCT district
+FROM address
+WHERE district LIKE 'K%a' and district not LIKE '% %';
 ```
 
 ![district_K_a](img/district_K_a.png)
