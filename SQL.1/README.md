@@ -31,7 +31,7 @@ WHERE amount > 10 AND payment_date BETWEEN '2005-06-14 23:59:59' AND '2005-06-18
 ORDER BY payment_date ASC;
 ```
 
-![*](img/*.png)
+![SELECT_WERE_BETWEEN](img/SELECT_WERE_BETWEEN.png)
 
 ---
 
@@ -48,7 +48,7 @@ ORDER BY rental_date DESC
 LIMIT 5;
 ```
 
-![*](SELECT_rental_date_LIMIT_5/SELECT_rental_date_LIMIT_5.png)
+![SELECT_rental_date_LIMIT_5](img/SELECT_rental_date_LIMIT_5.png)
 
 ---
 
