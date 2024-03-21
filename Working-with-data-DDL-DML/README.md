@@ -56,7 +56,7 @@ Reload privilege tables now? (Press y|Y for Yes, any other key for No) : y
 
 2. `Создайте учётную запись sys_temp.`
 
-Создаем пользователя sys_temp (с правом доступа только с localhost, иначе 'sys_temp'@'%' - для подключения через dbeaver переделал на 'sys_temp'@'%')
+Создаем пользователя sys_temp (с правом доступа только с localhost, иначе 'sys_temp'@'%')
 
 ```
 mysql -u root -p
@@ -143,7 +143,7 @@ bind-address            = 0.0.0.0
 ```
 sudo systemctl restart mysql.service
 ```
-
+Для подключения через dbeaver изменил на 'sys_temp'@'%'
 
 ![sakila_ER_Diagram](img/sakila_ER_Diagram.png)`
 
@@ -157,12 +157,34 @@ sudo systemctl restart mysql.service
 Название таблицы | Название первичного ключа
 customer         | customer_id
 ```
+### Решение 2
 
-
-
-`При необходимости прикрепитe сюда скриншоты
-![Название скриншота 2](ссылка на скриншот 2)`
-
+```
+Название таблицы             | Название первичного ключа
+actor                        | actor_id
+actor_info                   |
+address                      | address_id
+category                     | category_id
+city                         | city_id
+country                      | country_id
+customer                     | customer_id
+customer_list                |
+film                         | film_id   
+film_actor                   | actor_id
+film_category                | film_id   category_id
+staff_list                   |
+film_text                    | film_id
+inventory                    | inventory_id
+language                     | language_id
+nicer_but_slower_film_list   |
+payment                      | payment_id
+rental                       | rental_id
+sales_by_film_category       |
+sales_by_store               |
+staff                        | staff_id
+film_list                    |
+store                        | store_id
+```
 
 ---
 
@@ -175,7 +197,19 @@ customer         | customer_id
 
 ### Решение 3
 
+```
+mysql -u root -p
+grant all privileges on sakila.* to 'sys_temp'@'localhost' with grant option;
+show grants for 'sys_temp'@'localhost';
+```
+![show_sakila_grant_all](img/show_sakila_grant_all.png)
 
+```
+revoke DELETE, INSERT, UPDATE on sakila.* from 'sys_temp'@'localhost';
+show grants for 'sys_temp'@'localhost';
+flush privileges;
+```
 
-`При необходимости прикрепитe сюда скриншоты
-![Название скриншота](ссылка на скриншот)`
+![show_sakila_grant_castom](img/show_sakila_grant_castom.png)
+
+---
