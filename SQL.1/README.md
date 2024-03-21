@@ -74,11 +74,13 @@ WHERE first_name = 'Kelly' AND active = 1 OR first_name = 'Willie'  AND active =
 ### Решение 5
 
 ```
-SELECT email
+SELECT
+SUBSTRING_INDEX(email, '@', 1) AS login,
+SUBSTRING_INDEX(email, '@', -1) AS domen
 FROM customer;
 ```
 
-![*](img/*.png)
+![SELECT_SUBSTRING_INDEX_AS](img/SELECT_SUBSTRING_INDEX_AS.png)
 
 ---
 
