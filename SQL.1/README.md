@@ -95,12 +95,12 @@ FROM customer;
 ### Решение 6
 
 ```
-SELECT
-SUBSTRING_INDEX(email, '@', 1) AS login,
-SUBSTRING_INDEX(email, '@', -1) AS domen
+SELECT 
+CONCAT(UPPER(LEFT(LOWER(SUBSTRING_INDEX(email, '@', 1)), 1)), SUBSTR(LOWER(SUBSTRING_INDEX(email,'@',1)), 2)) AS login, 
+CONCAT(UPPER(LEFT(SUBSTRING_INDEX(email, '@', -1), 1)), SUBSTR(SUBSTRING_INDEX(email,'@',-1), 2)) AS domen
 FROM customer;
 ```
 
-![*](img/*.png)
+![SELECT_CONCAT_UPPER_LOWER](img/SELECT_CONCAT_UPPER_LOWER.png)
 
 ---
