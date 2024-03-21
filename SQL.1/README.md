@@ -58,12 +58,12 @@ LIMIT 5;
 ### Решение 4
 
 ```
-SELECT first_name, last_name, active 
+SELECT REPLACE (LOWER(first_name), "ll", "pp"), LOWER(last_name), active 
 FROM customer
 WHERE first_name = 'Kelly' AND active = 1 OR first_name = 'Willie'  AND active = 1;
 ```
 
-![*](img/*.png)
+![SELECT_REPLACE_LOWERname_ll_pp](img/SELECT_REPLACE_LOWERname_ll_pp.png)
 
 ---
 
