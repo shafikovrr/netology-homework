@@ -74,7 +74,8 @@ WHERE first_name = 'Kelly' AND active = 1 OR first_name = 'Willie'  AND active =
 ### Решение 5
 
 ```
-Поле для вставки кода...
+SELECT email
+FROM customer;
 ```
 
 ![*](img/*.png)
