@@ -95,7 +95,10 @@ FROM customer;
 ### Решение 6
 
 ```
-Поле для вставки кода...
+SELECT
+SUBSTRING_INDEX(email, '@', 1) AS login,
+SUBSTRING_INDEX(email, '@', -1) AS domen
+FROM customer;
 ```
 
 ![*](img/*.png)
