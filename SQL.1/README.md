@@ -9,11 +9,10 @@
 ### Решение 1
 
 ```
-Поле для вставки кода...
+SELECT DISTINCT district FROM address WHERE district LIKE 'K%a' and district not LIKE '% %';
 ```
 
-![*](img/*.png)
-
+![district_K_a](img/district_K_a.png)
 
 ---
 
