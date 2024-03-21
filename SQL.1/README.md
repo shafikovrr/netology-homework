@@ -58,7 +58,9 @@ LIMIT 5;
 ### Решение 4
 
 ```
-Поле для вставки кода...
+SELECT first_name, last_name, active 
+FROM customer
+WHERE first_name = 'Kelly' AND active = 1 OR first_name = 'Willie'  AND active = 1;
 ```
 
 ![*](img/*.png)
