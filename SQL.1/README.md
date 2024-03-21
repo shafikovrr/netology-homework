@@ -38,10 +38,13 @@ SELECT DISTINCT district FROM address WHERE district LIKE 'K%a' and district not
 ### Решение 3
 
 ```
-Поле для вставки кода...
+SELECT rental_date
+FROM rental
+ORDER BY rental_date DESC
+LIMIT 5;
 ```
 
-![*](img/*.png)
+![*](SELECT_rental_date_LIMIT_5/SELECT_rental_date_LIMIT_5.png)
 
 ---
 
