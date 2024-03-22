@@ -14,7 +14,9 @@
 ### Решение 1
 
 ```
-
+SELECT *, CONCAT(s2.first_name, ' ', s2.last_name)  AS staff_name
+FROM store s 
+INNER JOIN staff s2 ON s2.staff_id = s.store_id;
 ```
 
 ![*](img/*.png)
