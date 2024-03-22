@@ -20,11 +20,11 @@ INNER JOIN store s ON s.store_id = s3.store_id
 INNER JOIN address a ON a.address_id = s3.address_id
 INNER JOIN city c ON c.city_id  = a.city_id
 INNER JOIN customer c2 ON c2.store_id = s3.store_id
-GROUP BY c.city, s.store_id, s3.staff_id
+GROUP BY s3.staff_id
 HAVING COUNT(c2.store_id) > 300;
 ```
 
-![*](img/*.png)
+![INNER_JOIN_300](img/INNER_JOIN_300.png)
 
 ---
 
