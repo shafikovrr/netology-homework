@@ -35,7 +35,8 @@ HAVING COUNT(c2.store_id) > 300;
 ### Решение 2
 
 ```
-
+SELECT f.film_id, f.`length` 
+FROM film f;
 ```
 
 ![*](img/*.png)
