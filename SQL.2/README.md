@@ -73,12 +73,17 @@ LIMIT 1;
 
 ```
 SELECT 
-	s.first_name, p.amount 	
+	s.first_name AS 'Имя продавца', COUNT(p.amount) AS 'Общее количество продаж',
+		CASE
+				WHEN COUNT(p.amount) > 8000 THEN 'Да'
+				WHEN COUNT(p.amount) < 8000 THEN 'Нет'
+		END AS 'Премия'
 FROM payment p
-	INNER JOIN staff s ON s.staff_id = p.staff_id;
+	INNER JOIN staff s ON s.staff_id = p.staff_id
+GROUP BY s.first_name;
 ```
 
-![*](img/*.png)
+![SELECT_COUNT_CASE_INNER_GROUP_PREMIA](img/SELECT_COUNT_CASE_INNER_GROUP_PREMIA.png)
 
 ---
 
