@@ -72,7 +72,10 @@ LIMIT 1;
 
 
 ```
-
+SELECT 
+	s.first_name, p.amount 	
+FROM payment p
+	INNER JOIN staff s ON s.staff_id = p.staff_id;
 ```
 
 ![*](img/*.png)
