@@ -51,10 +51,18 @@ WHERE f.`length` > (SELECT AVG(`length`) FROM film f2);
 ### Решение 3
 
 ```
-
+SELECT 
+	SUM(p.amount) AS sum, 
+	DATE_FORMAT(p.payment_date, '%Y-%m') AS pay_per_mon, 
+	COUNT(r.rental_id) AS total_rent 
+FROM payment p
+INNER JOIN rental r ON p.rental_id = r.rental_id 
+GROUP BY pay_per_mon
+ORDER BY sum DESC
+LIMIT 1;
 ```
 
-![*](img/*.png)
+![max_payment_per_month](img/max_payment_per_month.png)
 
 ---
 
