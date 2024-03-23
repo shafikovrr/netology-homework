@@ -93,9 +93,14 @@ GROUP BY s.first_name;
 
 
 ```
-
+SELECT 
+	f.title 
+FROM film f
+	LEFT JOIN inventory i ON i.film_id = f.film_id
+	LEFT JOIN rental r ON r.inventory_id = i.inventory_id
+WHERE r.rental_id IS NULL;
 ```
 
-![*](img/*.png)
+![SELECT_LEFT_JOIN_WHERE_IS_NULL](img/SELECT_LEFT_JOIN_WHERE_IS_NULL.png)
 
 ---
