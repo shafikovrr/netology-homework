@@ -37,7 +37,7 @@ HAVING COUNT(c2.store_id) > 300;
 ```
 SELECT COUNT(f.film_id) AS 'Nuber'
 FROM film f
-WHERE f.`length` > (SELECT AVG(`length`) FROM film f2);
+WHERE f.`length` > (SELECT AVG(`length`) FROM film f);
 ```
 
 ![SELECT_COUNT_BOL_AVG](img/SELECT_COUNT_BOL_AVG.png)
