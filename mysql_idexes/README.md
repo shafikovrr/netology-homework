@@ -31,31 +31,24 @@ select distinct concat(c.last_name, ' ', c.first_name), sum(p.amount) over (part
 from payment p, rental r, customer c, inventory i, film f
 where date(p.payment_date) = '2005-07-30' and p.payment_date = r.rental_date and r.customer_id = c.customer_id and i.inventory_id = r.inventory_id
 ```
-- `перечислите узкие места;
-
-`
+- `перечислите узкие места;`
 - `оптимизируйте запрос: внесите корректировки по использованию операторов, при необходимости добавьте индексы.`
 
 ### Решение 2
 
 ```
-
+SELECT
+	DISTINCT CONCAT(c.last_name, ' ', c.first_name),
+	SUM(p.amount) OVER (PARTITION BY c.customer_id) 
+FROM 
+	payment p, 
+	customer c 
+WHERE DATE(p.payment_date) = '2005-07-30' AND p.customer_id = c.customer_id; 
 ```
 
 ![*](img/*.png)
 
----
 
-### Задание 3
-
-`Самостоятельно изучите, какие типы индексов используются в PostgreSQL. Перечислите те индексы, которые используются в PostgreSQL, а в MySQL — нет.
-Приведите ответ в свободной форме.`
-
-### Решение 3
-
-```
-
-```
 
 ![*](img/*.png)
 
