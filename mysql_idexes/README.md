@@ -8,8 +8,12 @@
 
 Информация о таблицах базы (размеры индексов INDEX_LENGTH и размеры таблиц DATA_LENGTH)
 
-```
-SELECT TABLE_NAME, INDEX_LENGTH, DATA_LENGTH
+```sql
+SELECT 
+	TABLE_SCHEMA AS 'Название базы данных', 
+	SUM(INDEX_LENGTH) AS 'Общий размер индексов', 
+	SUM(DATA_LENGTH) AS 'Общий размер таблиц', 
+	ROUND((SUM(INDEX_LENGTH)/(SUM(DATA_LENGTH)+SUM(INDEX_LENGTH))*100), 1) AS 'Процентное отношение'
 FROM information_schema.TABLES
 WHERE TABLE_SCHEMA = 'sakila';
 ```
