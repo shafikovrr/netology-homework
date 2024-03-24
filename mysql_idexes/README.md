@@ -18,7 +18,7 @@ FROM information_schema.TABLES
 WHERE TABLE_SCHEMA = 'sakila';
 ```
 
-![*](img/*.png)
+![SELECT_TABLE_SCHEMA_PROCENT](img/SELECT_TABLE_SCHEMA_PROCENT.png)
 
 ---
 
