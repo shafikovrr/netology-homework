@@ -7,15 +7,15 @@
 ### Решение 1
 
 ```sql
-<!--  
-select *
+ 
+<!-- select *-->
 from information_schema.TABLES
 where TABLE_SCHEMA = 'sakila';
 
 SELECT TABLE_NAME, INDEX_LENGTH, DATA_LENGTH
 FROM information_schema.TABLES
 WHERE TABLE_SCHEMA = 'sakila';
--->
+
 
 SELECT 
 	TABLE_SCHEMA AS 'Название базы данных', 
