@@ -61,3 +61,54 @@ WHERE DATE(p.payment_date) = '2005-07-30' AND p.customer_id = c.customer_id;
 ![optimized_query](img/optimized_query.png)
 
 ---
+
+Оптимизированный запрос #2
+
+```sql
+EXPLAIN ANALYZE
+SELECT 
+	CONCAT(c.last_name, ' ', c.first_name), 
+	SUM(p.amount)
+FROM customer c 
+	JOIN rental r ON r.customer_id = c.customer_id
+	JOIN payment p ON p.payment_date = r.rental_date
+WHERE p.payment_date >= '2005-07-30' and p.payment_date < date_add('2005-07-30', interval 1 day)
+group by c.last_name, c.first_name;
+```
+
+![optimized_query_2](img/optimized_query_2.png)
+
+Ввод индекса payment_date
+
+```
+REATE INDEX payment_date ON payment(payment_date);
+```
+
+Результат оптимизированного запроса #3 (после индексации payment_date)
+
+![optimized_query_3](img/optimized_query_3.png)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
