@@ -9,8 +9,8 @@
 Информация о таблицах базы (размеры индексов INDEX_LENGTH и размеры таблиц DATA_LENGTH)
 
 ```
-SELECT TABLE_NAME, INDEX_LENGTH, DATA_LENGTH  
-FROM INFORMATION_SCHEMA.TABLES
+SELECT TABLE_NAME, INDEX_LENGTH, DATA_LENGTH
+FROM information_schema.TABLES
 WHERE TABLE_SCHEMA = 'sakila';
 ```
 
