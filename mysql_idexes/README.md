@@ -6,8 +6,12 @@
 
 ### Решение 1
 
-```
+Информация о таблицах базы (размеры индексов INDEX_LENGTH и размеры таблиц DATA_LENGTH)
 
+```
+select *  
+from information_schema.tables
+where TABLE_SCHEMA = 'sakila';
 ```
 
 ![*](img/*.png)
