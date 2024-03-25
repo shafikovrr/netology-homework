@@ -70,11 +70,13 @@ pg_restore -C -d postgres db.dump
 https://www.postgresql.org/docs/current/app-pgrestore.html
 ```
 
-2. Синтакис
+2. Запуск бекапа с помощью средств операционной системы через CRON (запуск скрипта) 
 
+```
+0 5 * * 0-6 /home/www/pg_backup.bash
+```
 
-
-
+Или с помощью pg_cron - сторонее программное обеспечение, пзволяющее выполнять резервное копирование внутри базы данных.
 
 ---
 
@@ -89,8 +91,23 @@ https://www.postgresql.org/docs/current/app-pgrestore.html
 
 ### Решение 3
 
+1. Пример команды инкрементного резервного копирования базы данных MySQL
+
+```
+https://dev.mysql.com/doc/mysql-enterprise-backup/8.0/en/mysqlbackup.incremental.html
 ```
 
 ```
+mysqlbackup --defaults-file=/home/dbadmin/my.cnf \
+  --incremental \
+  --backup-dir=/home/dbadmin/temp_dir \
+  --backup-image=incremental_image1.bi \
+   backup-to-image
+```
 
-![Название скриншота](ссылка на скриншот)`
+Параметры инкрементного резервного копирования
+
+```
+https://dev.mysql.com/doc/mysql-enterprise-backup/8.0/en/backup-incremental-options.html
+```
+---
