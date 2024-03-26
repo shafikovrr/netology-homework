@@ -98,6 +98,7 @@ sudo nmap -sU 192.168.0.78
 
 ![UDP_nmap_-sU](img/UDP_nmap_-sU.png)
 
+![W_UDP_nmap_-sU](img/W_UDP_nmap_-sU.png)
 
 
 
