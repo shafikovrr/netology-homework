@@ -63,13 +63,53 @@ vsftpd 2.3.4 - Backdoor Command Execution (Metasploit)`
 
 ### Решение 2
 
+1. Cканирование Metasploitable в режиме SYN
+
 3306/tcp open  mysql
 
 ```
 sudo nmap -sS 192.168.0.78
 ```
-![TCP_SYN_nmap_-sS](img/TCP_SYN_nmap_-sS.png)
+![SYN_nmap_-sS](img/SYN_nmap_-sS.png)
 
-![W_TCP_SYN_nmap_-sS](img/W_TCP_SYN_nmap_-sS.png)
+![W_SYN_nmap_-sS](img/W_SYN_nmap_-sS.png)
+
+2. Cканирование Metasploitable в режиме FIN
+
+```
+sudo nmap -sF 192.168.0.78
+```
+
+![FIN_nmap_-sF](img/FIN_nmap_-sF.png)
+
+3. Cканирование Metasploitable в режиме Xmas
+
+```
+sudo nmap -sX 192.168.0.78
+```
+
+![Xmas_nmap_-sX](img/Xmas_nmap_-sX.png)
+
+4. Cканирование Metasploitable в режиме UDP.
+
+```
+sudo nmap -sU 192.168.0.78
+```
+
+![UDP_nmap_-sU](img/UDP_nmap_-sU.png)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ---
