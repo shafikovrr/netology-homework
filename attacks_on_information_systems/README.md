@@ -63,15 +63,13 @@ vsftpd 2.3.4 - Backdoor Command Execution (Metasploit)`
 
 ### Решение 2
 
-```
-Поле для вставки кода...
-....
-....
-....
-....
-```
+3306/tcp open  mysql
 
-`При необходимости прикрепитe сюда скриншоты
-![Название скриншота 2](ссылка на скриншот 2)`
+```
+sudo nmap -sS 192.168.0.78
+```
+![TCP_SYN_nmap_-sS](img/TCP_SYN_nmap_-sS.png)
+
+![W_TCP_SYN_nmap_-sS](img/W_TCP_SYN_nmap_-sS.png)
 
 ---
