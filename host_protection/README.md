@@ -34,6 +34,8 @@ sudo ls /home/ryptouser
 
 ![cryptouser_ecryptfs-migrate-home_sudo_ls](img/cryptouser_ecryptfs-migrate-home_sudo_ls.png)
 
+Если все команды выполнять от учетки админа, зайти в учетку cryptouser (с паролем cryptouser), затем из нее выйти через exit (автоматически переключившись на админа), то админу остается доступ к файлам. Если же произвести перезагрузку системы, то админу недоступны файлы cryptouser.
+
 ---
 
 ### Задание 2
@@ -47,10 +49,73 @@ sudo ls /home/ryptouser
 ### Решение 2
 
 ```
+sudo apt install gparted
+```
+![install_gparted](img/install_gparted.png)
 
 ```
+sudo apt install cryptsetup
+```
 
-![Название скриншота 2](ссылка на скриншот 2)
+![install_cryptsetup](img/install_cryptsetup.png)
+
+```
+cryptsetup --version
+```
+
+![cryptsetup_version](img/cryptsetup_version.png)
+
+Результат создания раздела в gparted
+
+![gparted](img/gparted.png)
+
+```
+lsblk
+```
+
+![sdb1](img/sdb1.png)
+
+Создаем шифрованный раздел:
+
+```
+sudo cryptsetup -y -v --type luks2 luksFormat /dev/sdb1
+```
+
+Открываем только что созданный раздел
+
+```
+sudo cryptsetup luksOpen /dev/sdb1 disk
+ls /dev/mapper/disk
+```
+
+Форматирование раздела и создание файловой системы:
+
+```
+sudo dd if=/dev/zero of=/dev/mapper/disk
+sudo mkfs.ext4 /dev/mapper/disk
+```
+
+![luksFormat_luksOpen_ls_dd_mkfs](img/luksFormat_luksOpen_ls_dd_mkfs.png)
+
+
+Примонтируем созданный раздел
+
+```
+mkdir .mydisk
+sudo mount /dev/mapper/disk .mydisk/
+ls -la .mydisk/
+```
+
+![mkdir_mount_ls_la](img/mkdir_mount_ls_la.png)
+
+Отключение устройства
+
+```
+sudo umount .mydisk
+sudo cryptsetup luksClose disk
+```
+
+![umount_luksClose](img/umount_luksClose.png)
 
 ---
 
