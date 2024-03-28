@@ -14,10 +14,25 @@
 ### Решение 1 
 
 ```
-
+sudo apt update && sudo apt upgrade -y
+sudo apt install ecryptfs-utils
+sudo adduser cryptouser
+su cryptouser
+cd /home/cryptouser
+touch cryptouser.password
+ls
 ```
 
-![Название скриншота 1](ссылка на скриншот 1)
+![cryptouser_adduser_touch](img/cryptouser_adduser_touch.png)
+
+![cryptouser_admin_sudo_ls](img/cryptouser_admin_sudo_ls.png)
+
+```
+sudo ecryptfs-migrate-home -u cryptouser
+sudo ls /home/ryptouser
+```
+
+![cryptouser_ecryptfs-migrate-home_sudo_ls](img/cryptouser_ecryptfs-migrate-home_sudo_ls.png)
 
 ---
 
@@ -56,5 +71,3 @@
 ![Название скриншота 3](ссылка на скриншот 3)
 
 ---
-
-`При необходимости прикрепитe сюда скриншоты
