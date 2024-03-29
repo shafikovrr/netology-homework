@@ -46,9 +46,13 @@ sudo nmap -sA 192.168.0.9
 
 Сообщений в логах нет (nmap не смог определить операционную систему)
 
+![k_sV](img/k_sV.png)
+
 ```
 sudo nmap -sT 192.168.0.9
 ```
+
+![k_sT](img/k_sT.png)
 
 ![s_nmap_sT](img/s_nmap_sT.png)
 
@@ -56,11 +60,15 @@ sudo nmap -sT 192.168.0.9
 sudo nmap -sS 192.168.0.9
 ```
 
+![k_sS](img/k_sS.png)
+
 ![s_nmap_sS](img/s_nmap_sS.png)
 
 ```
 sudo nmap -sV 192.168.0.9
 ```
+
+![k_sV](img/k_sV.png)
 
 suricata:
 
