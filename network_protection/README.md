@@ -51,16 +51,22 @@ sudo nmap -sA 192.168.0.9
 ```
 sudo nmap -sT 192.168.0.9
 ```
+Обнаружен открытый порт ssh 22 (соединение к хосту по ssh)
 
 ![k_sT](img/k_sT.png)
+
+Surikata реагирует на сканирование портов (mySQL port 3306, PostgreSQL port 5432, Oracle SQL port 1521) и класифицирует их как Potentially Bad Traffic.
 
 ![s_nmap_sT](img/s_nmap_sT.png)
 
 ```
 sudo nmap -sS 192.168.0.9
 ```
+Обнаружен открытый порт ssh 22 (соединение к хосту по ssh)
 
 ![k_sS](img/k_sS.png)
+
+Surikata реагирует на сканирование портов (mySQL port 3306, PostgreSQL port 5432, Oracle SQL port 1521) и класифицирует их как Potentially Bad Traffic.
 
 ![s_nmap_sS](img/s_nmap_sS.png)
 
@@ -68,11 +74,17 @@ sudo nmap -sS 192.168.0.9
 sudo nmap -sV 192.168.0.9
 ```
 
+Получена более полная информация. Обнаружен открытый порт ssh 22 (соединение к хосту по ssh - Ubuntu, OS Linux)
+
 ![k_sV](img/k_sV.png)
 
 suricata:
 
+Surikata реагирует на сканирование портов (mySQL port 3306, PostgreSQL port 5432, Oracle SQL port 1521) и класифицирует их как Potentially Bad Traffic.
+
 ![*s_nmap_sV](img/s_nmap_sV.png)
+
+Появилось сообщение о закрытии удаленным хостом (kalilinux) соединения во время процесса обмена ключами.
 
 fail2ban:
 
