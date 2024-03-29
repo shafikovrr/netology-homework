@@ -44,7 +44,7 @@ sudo systemctl restart suricata
 sudo nmap -sA 192.168.0.9
 ```
 
-Сообщений в логах нет
+Сообщений в логах нет (nmap не смог определить операционную систему)
 
 ```
 sudo nmap -sT 192.168.0.9
