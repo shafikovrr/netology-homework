@@ -90,11 +90,6 @@ fail2ban:
 
 ![f2b_nmap_sV](img/f2b_nmap_sV.png)
 
-
-
-
-
-
 ---
 
 ### Задание 2
@@ -132,9 +127,14 @@ sudo apt install hydra
 ```
 sudo hydra -t 4 -L users.txt -P pass.txt 192.168.0.61 ssh
 ```
-Пароль подобран
+
+Пароль подобран (fail2ban отключен).
 
 ![k_pass_ok](img/k_pass_ok.png)
+
+```
+tail -f /var/log/auth.log
+```
 
 ![tail_auth_log_pass_ok](img/tail_auth_log_pass_ok.png)
 
