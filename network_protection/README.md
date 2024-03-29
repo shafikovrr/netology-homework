@@ -120,16 +120,28 @@ hydra -L users.txt -P pass.txt < ip-адрес > ssh
 
 ### Решение 2
 
+
+Установим hydra на kalilinux
+
 ```
-Поле для вставки кода...
-....
-....
-....
-....
+sudo apt install hydra
 ```
 
-`При необходимости прикрепитe сюда скриншоты
-![Название скриншота 2](ссылка на скриншот 2)`
+Произведем подбор пароля
 
+```
+sudo hydra -t 4 -L users.txt -P pass.txt 192.168.0.61 ssh
+```
+Пароль подобран
+
+![k_pass_ok](img/k_pass_ok.png)
+
+![tail_auth_log_pass_ok](img/tail_auth_log_pass_ok.png)
+
+Hydra заблокирована fail2ban
+
+![k_pass_no](img/k_pass_no.png)
+
+![f2b_pass_block](img/f2b_pass_block.png)
 
 ---
