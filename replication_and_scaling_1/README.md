@@ -163,7 +163,7 @@ SHOW SLAVE STATUS\G;
 
 ![master_1_show_status](img/master_1_show_status.png)
 
-На мастере 1 создадим новую таблицу.
+На мастере 1 создадим новую базу данных.
 
 ```
 CREATE DATABASE netology_shafikov_master_master;
