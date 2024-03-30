@@ -87,7 +87,7 @@ SHOW DATABASES;
 На мастере
 
 ```
-SHOW MASTER STATUS
+SHOW MASTER STATUS;
 ```
 
 ![show_master_status](img/show_master_status_2.png)
@@ -100,5 +100,106 @@ SHOW SLAVE STATUS\G;
 ```
 
 ![show_status_slave_2](img/show_slave_status_4.png)
+
+---
+
+### Задание 3
+
+`Выполните конфигурацию master-master репликации. Произведите проверку.
+Приложите скриншоты конфигурации, выполнения работы: состояния и режимы работы серверов.`
+
+### Решение 3
+
+На мастере 1
+
+```
+mysql -u root -p
+CREATE USER 'repl'@'%' IDENTIFIED BY 'masterpass';
+GRANT REPLICATION SLAVE ON *.* TO 'repl'@'%';
+SHOW GRANTS FOR repl@'%';
+SHOW MASTER STATUS;
+```
+
+На мастере 2
+
+```
+mysql -u root -p
+CREATE USER 'repl'@'%' IDENTIFIED BY 'masterpass';
+GRANT REPLICATION SLAVE ON *.* TO 'repl'@'%';
+SHOW GRANTS FOR repl@'%';
+SHOW MASTER STATUS;
+```
+
+```
+CHANGE MASTER TO
+SOURCE_HOST='mysql-master_1',
+SOURCE_USER='repl',
+SOURCE_PASSWORD='masterpass',
+SOURCE_LOG_FILE='mysql-bin.000003',
+SOURCE_LOG_POS=660;
+```
+
+```
+START SLAVE;
+SHOW SLAVE STATUS\G;
+```
+
+![master_2_show_status](img/master_2_show_status.png)
+
+На мастере 1
+
+```
+CHANGE MASTER TO
+SOURCE_HOST='mysql-master_2',
+SOURCE_USER='repl',
+SOURCE_PASSWORD='masterpass',
+SOURCE_LOG_FILE='mysql-bin.000003',
+SOURCE_LOG_POS=660;
+```
+```
+START SLAVE;
+SHOW SLAVE STATUS\G;
+```
+
+![master_1_show_status](img/master_1_show_status.png)
+
+На мастере 1 создадим новую таблицу.
+
+```
+CREATE DATABASE netology_shafikov_master_master;
+SHOW DATABASES;
+```
+
+![master_1_create_new_database](img/master_1_create_new_database.png)
+
+На мастере 2 появилась созданная на мастере 1 новая база данных
+
+```
+SHOW DATABASES;
+```
+
+![master_2_show_new_database](img/master_2_show_new_database.png)
+
+
+На мастере 2 создадим в новой базе данных таблицу
+
+```
+use netology_shafikov_master_master;
+create table shafikov_table (id INT, fio VARCHAR(100));
+show tables;
+```
+
+![master_2_create_new_table](img/master_2_create_new_table.png)
+
+
+На мастере 1 база данных обновилась
+
+```
+use netology_shafikov_master_master;
+show tables;
+describe shafikov_table;
+```
+
+![master_1_show_new_table_describe](img/master_1_show_new_table_describe.png)
 
 ---
