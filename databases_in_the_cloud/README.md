@@ -112,7 +112,7 @@ select * from test_table;
 
 ### Решение 1
 
-
+[Зайти в консоль yandex cloud](https://console.yandex.cloud) 
 
 
 
