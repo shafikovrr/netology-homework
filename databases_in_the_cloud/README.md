@@ -130,7 +130,7 @@ select * from test_table;
      б) Зона доступности: `ru-central1-a`, Подсеть: `edu-ru-central1-a`, Публичный доступ: `есть`;
   4. Нажимаем на: `Создать кластер`.
      
-
+![cluster_topology](img/cluster_topology.png)
 
 
 
