@@ -114,7 +114,7 @@ select * from test_table;
 
 [Зайти в консоль yandex cloud](https://console.yandex.cloud) 
 
-
+[Выбираем Managed Service for PostgreSQL](https://console.yandex.cloud/folders/b1gltt4aeqoofm7e2pnj/managed-postgresql)
 
 
 
