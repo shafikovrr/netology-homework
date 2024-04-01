@@ -112,11 +112,24 @@ select * from test_table;
 
 ### Решение 1
 
-[Зайти в консоль yandex cloud](https://console.yandex.cloud) 
-
-[Выбираем Managed Service for PostgreSQL](https://console.yandex.cloud/folders/b1gltt4aeqoofm7e2pnj/managed-postgresql)
-
-
+1. [Зайти в консоль yandex cloud](https://console.yandex.cloud) 
+2. [Выбираем Managed Service for PostgreSQL](https://console.yandex.cloud/folders/b1gltt4aeqoofm7e2pnj/managed-postgresql)
+3. Нажимаем на `Cоздать кластер`:
+   - Имя кластера: `postgresql323`;
+   - Окружение: `PRODUCTION`;
+   - Версия (psql): 15;
+   - Платформа: `Intel Ice Lake`;
+   - Тип: `standart - s3-c2.m8 - 2 cores cCPU, 8Gb memory `;
+   - Размер хранилища: 10Gb;
+   - Имя БД: `db1`;
+   - Имя пользователя: `adrin`;
+   - Пароль: `password`;
+   - Сеть: `edu`;
+   - Создадим два хоста:
+     а) Зона доступности: `ru-central1-b`, Подсеть: `edu-ru-central1-b`, Публичный доступ: `есть`;
+     б) Зона доступности: `ru-central1-a`, Подсеть: `edu-ru-central1-a`, Публичный доступ: `есть`;
+  4. Нажимаем на: `Создать кластер`.
+     
 
 
 
