@@ -132,15 +132,41 @@ select * from test_table;
      
 ![cluster_topology](img/cluster_topology.png)
 
+Для подключения воспользуемся инструкцией (Кластеры - postgresql323 - Обзор)
 
+1. Установите сертификат:
 
+```
+mkdir -p ~/.postgresql && \
+wget "https://storage.yandexcloud.net/cloud-certs/CA.pem" \
+    --output-document ~/.postgresql/root.crt && \
+chmod 0600 ~/.postgresql/root.crt
+```
 
+2. Установите зависимости:
 
+```
+sudo apt update && sudo apt install --yes postgresql-client
+```
 
+3. Подключитесь к базе данных:
 
+```
+psql "host=rc1a-f0328ld7t043odvj.mdb.yandexcloud.net,rc1b-rqjc5zm4i1y6h2x1.mdb.yandexcloud.net \
+    port=6432 \
+    sslmode=verify-full \
+    dbname=db1 \
+    user=adrin \
+    target_session_attrs=read-write"
+```
 
+`После выполнения команды введите пароль пользователя для завершения процедуры подключения.`
 
+4. Для проверки успешности подключения выполните запрос:
 
+```
+SELECT version();
+```
 
 
 
