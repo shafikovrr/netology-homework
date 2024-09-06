@@ -14,27 +14,27 @@
 
 1. Вывод команды: ansible-playbook playbook1.yaml \-v \-K
 
-![][img/image1]
+![][ansible-2/img/image1.png]
 
 2. Вывод команды: ansible-playbook playbook2.yaml \-v \-K
 
-![][img/image2]
+![][ansible-2/img/image2]
 
-![][img/image3]
+![][ansible-2/img/image3]
 
-![][img/image4]
+![][ansible-2/img/image4]
 
-![][img/image5]
+![][ansible-2/img/image5]
 
 3. Вывод команды: ansible-playbook playbook3.yaml \-v \-K
 
-![][img/image6]
+![][ansible-2/img/image6]
 
-![][img/image7]
+![][ansible-2/img/image7]
 
 Скрин входа по SSH на сервер srv2
 
-![][img/image8]
+![][ansible-2/img/image8]
 
 # **Задание 2**
 
@@ -45,12 +45,12 @@
 
 Вывод команды: ansible-playbook playbook4.yaml \-v \-K
 
-![][img/image9]  
-![][img/image10]
+![][ansible-2/img/image9]  
+![][ansible-2/img/image10]
 
 Скрин входа по SSH на сервер srv1
 
-**![][img/image11]**
+**![][ansible-2/img/image11]**
 
 # 
 
@@ -80,14 +80,14 @@
 # **Решение 3**
 
 Вывод команды: ansible-playbook playbook5.yaml \-v \-K  
-![][img/image12]  
-![][img/image13]  
-![][img/image14]  
-![][img/image15]  
-![][img/image16]  
-![][img/image17]  
+![][ansible-2/img/image12]  
+![][ansible-2/img/image13]  
+![][ansible-2/img/image14]  
+![][ansible-2/img/image15]  
+![][ansible-2/img/image16]  
+![][ansible-2/img/image17]  
 Скриншот index.html
 
-![][img/image18]
+![][ansible-2/img/image18]
 
-![][img/image19]
+![][ansible-2/img/image19]
