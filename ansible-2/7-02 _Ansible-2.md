@@ -74,7 +74,6 @@
 * предоставьте скриншоты выполнения плейбука;  
 * предоставьте скриншот браузера, отображающего сконфигурированный index.html в качестве сайта.
 
-
 # Решение 3
 
 Вывод команды: ansible-playbook playbook5.yaml \-v \-K  
@@ -83,7 +82,9 @@
 ![14](img/image11.png)  
 ![15](img/image5.png)  
 ![16](img/image3.png)  
-![17](img/image2.png)  
+![17](img/image2.png)
+
 Скриншот index.html
+
 ![18](img/image4.png)
 ![19](img/image8.png)
