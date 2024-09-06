@@ -14,28 +14,28 @@
 
 1. Вывод команды: ansible-playbook playbook1.yaml \-v \-K
 
-![image1](img/image1.png)
+![1](img/image15.png)
 
 
 2. Вывод команды: ansible-playbook playbook2.yaml \-v \-K
 
-![](img/image2.png)
+![2](img/image12.png)
 
-![](img/image3.png)
+![3](img/image7.png)
 
-![](img/image4.png)
+![4](img/image6.png)
 
-![](img/image5.png)
+![5](img/image1.png)
 
 3. Вывод команды: ansible-playbook playbook3.yaml \-v \-K
 
-![](img/image6.png)
+![6](img/image19.png)
 
-![](img/image7.png)
+![7](img/image16.png)
 
 Скрин входа по SSH на сервер srv2
 
-![](img/image8.png)
+![8](img/image9.png)
 
 # Задание 2
 
@@ -46,12 +46,12 @@
 
 Вывод команды: ansible-playbook playbook4.yaml \-v \-K
 
-![](img/image9.png) 
-![](img/image10.png)
+![9](img/image18.png) 
+![10](img/image10.png)
 
 Скрин входа по SSH на сервер srv1
 
-![](img/image11.png)
+![11](img/image13.png)
 
 # Задание 3
 
@@ -78,12 +78,12 @@
 # Решение 3
 
 Вывод команды: ansible-playbook playbook5.yaml \-v \-K  
-![](img/image12.png)  
-![](img/image13.png)  
-![](img/image14.png)  
-![](img/image15.png)  
-![](img/image16.png)  
-![](img/image17.png)  
+![12](img/image17.png)  
+![13](img/image14.png)  
+![14](img/image11.png)  
+![15](img/image5.png)  
+![16](img/image3.png)  
+![17](img/image2.png)  
 Скриншот index.html
-![](img/image18.png)
-![](img/image19.png)
+![18](img/image4.png)
+![19](img/image8.png)
