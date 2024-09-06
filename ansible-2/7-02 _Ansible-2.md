@@ -14,7 +14,8 @@
 
 1. Вывод команды: ansible-playbook playbook1.yaml \-v \-K
 
-![image1][ansible-2/img/image1.png]
+![image1](ansible-2/img/image1.png)
+
 
 2. Вывод команды: ansible-playbook playbook2.yaml \-v \-K
 
