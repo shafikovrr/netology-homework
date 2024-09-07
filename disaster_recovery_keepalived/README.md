@@ -42,8 +42,8 @@ write
 ```
 show standby brief
 ```
-![1hsrp](https://github.com/shafikovrr/disaster_recovery_keepalived/blob/main/img/1hsrp.png)
-![2hsrp](https://github.com/shafikovrr/disaster_recovery_keepalived/blob/main/img/2hsrp.png)
+![1hsrp](img/1hsrp.png)
+![2hsrp](img/2hsrp.png)
 
 ---
 
@@ -121,8 +121,8 @@ vrrp_instance VI_1 {
 }
 ```
 ---
-![1keepalived_check](https://github.com/shafikovrr/disaster_recovery_keepalived/blob/main/img/1keepalived_check.png)
-![2keepalived_check](https://github.com/shafikovrr/disaster_recovery_keepalived/blob/main/img/2keepalived_check.png)
+![1keepalived_check](img/1keepalived_check.png)
+![2keepalived_check](img/2keepalived_check.png)
 
 ```
 sudo apt update && sudo apt upgrade -y
