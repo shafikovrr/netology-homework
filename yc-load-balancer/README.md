@@ -30,10 +30,10 @@
 
 [meta.yaml](https://github.com/shafikovrr/yc-load-balancer/blob/main/meta.yaml)
 
-![Виртуальные машины](https://github.com/shafikovrr/yc-load-balancer/blob/main/img/lb1.png)
+![Виртуальные машины](img/lb1.png)
 
-![Статус балансировщика и целевой группы](https://github.com/shafikovrr/yc-load-balancer/blob/main/img/lb2.png)
+![Статус балансировщика и целевой группы](img/lb2.png)
 
-![Запрос на IP-адрес балансировщика](https://github.com/shafikovrr/yc-load-balancer/blob/main/img/lb3.png)
+![Запрос на IP-адрес балансировщика](img/lb3.png)
 
-![Отключение сервера 0](https://github.com/shafikovrr/yc-load-balancer/blob/main/img/lb4.png)
+![Отключение сервера 0](img/lb4.png)
