@@ -29,7 +29,7 @@ sudo apt install memcached
 ```
 sudo systemctl status memceched
 ```
-![Статус memcached](https://github.com/shafikovrr/Redis_memcached/blob/main/img/status_memcached.png)
+![Статус memcached](img/status_memcached.png)
 
 ---
 
@@ -52,7 +52,7 @@ add key 0 5 1
 get key
 ```
 
-![del ttl](https://github.com/shafikovrr/Redis_memcached/blob/main/img/del_ttl.png)
+![del ttl](img/del_ttl.png)
 
 ---
 
@@ -85,7 +85,7 @@ get age
 get name
 ```
 
-![redis_add_view](https://github.com/shafikovrr/Redis_memcached/blob/main/img/redis_add_view.png)
+![redis_add_view](img/redis_add_view.png)
 
 ---
 
@@ -122,4 +122,4 @@ incrby key5 5
 get key5
 ```
 
-![redis_incrby](https://github.com/shafikovrr/Redis_memcached/blob/main/img/redis_incrby.png)
+![redis_incrby](img/redis_incrby.png)
