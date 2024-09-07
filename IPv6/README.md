@@ -160,15 +160,18 @@ Router#wr mem
 
 1) На маршрутизаторах добавьте статические записи маршрутизации о доступности других сетей.
 
+#### Router0
+
 ```
-Router0
 Router>enable
 Router#configure terminal
 Router(config)#ipv6 route 2001:DB8:ACAD:A0::1/64 2001:DB8:ACAD:A001::2
 Router(config)#end
 ```
+
+#### Router1
+
 ```
-Router1
 ipv6 route 2001:DB8:ACAD:1::1/64 2001:DB8:ACAD:A001::1
 ipv6 route 2001:DB8:ACAD:10::1/64 2001:DB8:ACAD:A001::1
 ipv6 route 2001:DB8:ACAD:20::1/64 2001:DB8:ACAD:A001::1
