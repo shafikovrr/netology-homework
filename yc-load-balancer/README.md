@@ -26,9 +26,9 @@
 
 ### Решение 1
 
-[Terraform Playbook](main.tf)
+[Terraform Playbook](files/main.tf)
 
-[meta.yaml](meta.yaml)
+[meta.yaml](files/meta.yaml)
 
 ![Виртуальные машины](img/lb1.png)
 
