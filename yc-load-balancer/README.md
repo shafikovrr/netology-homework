@@ -26,9 +26,9 @@
 
 ### Решение 1
 
-[Terraform Playbook](https://github.com/shafikovrr/yc-load-balancer/blob/main/main.tf)
+[Terraform Playbook](main/main.tf)
 
-[meta.yaml](https://github.com/shafikovrr/yc-load-balancer/blob/main/meta.yaml)
+[meta.yaml](main/meta.yaml)
 
 ![Виртуальные машины](img/lb1.png)
 
