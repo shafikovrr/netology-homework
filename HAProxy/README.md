@@ -79,7 +79,7 @@ sudo systemctl reload haproxy
 
 [Конфигурационный файл HaProxy](https://github.com/shafikovrr/HAProxy/blob/main/haproxy.cfg)
 
-![HaProxy_L4](https://github.com/shafikovrr/HAProxy/blob/main/img/HaProxy_L4.png)
+![HaProxy_L4](img/HaProxy_L4.png)
 
 ---
 
@@ -175,6 +175,6 @@ backend web_servers # секция бэкенд
 
 [Конфигурационный файл HaProxy](https://github.com/shafikovrr/HAProxy/blob/main/haproxy2.cfg)
 
-![HaProxy_L4](https://github.com/shafikovrr/HAProxy/blob/main/img/HaProxy_L7.png)
+![HaProxy_L4](img/HaProxy_L7.png)
 
 
