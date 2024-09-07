@@ -12,7 +12,7 @@
 ```
 rsync -av --checksum --delete --exclude=".*/" /home/rinat/home/ /tmp/backup
 ```
-![Rsync_1](https://github.com/shafikovrr/rsync/blob/main/img/rsync_1.png)
+![Rsync_1](img/rsync_1.png)
 
 ---
 
@@ -47,7 +47,7 @@ fi
 
 [Конфигурационный файл crontab](https://github.com/shafikovrr/rsync/blob/main/rinat)
 
-![Rsync_2](https://github.com/shafikovrr/rsync/blob/main/img/rsync_2.png)
+![Rsync_2](img/rsync_2.png)
 
 ---
 
@@ -60,4 +60,4 @@ fi
 ```
 rsync -av --delete --bwlimit=1024 --info=progress2 /home/adrin/Packet_Tracer821_amd64_signed.deb adrin@192.168.0.69:/home/adrin/backup/
 ```
-![Rsync_2](https://github.com/shafikovrr/rsync/blob/main/img/Rsync_3.png)
+![Rsync_2](img/Rsync_3.png)
