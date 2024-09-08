@@ -39,7 +39,7 @@ spec:
     spec:
       containers:
       - name: master
-        img/image: bitnami/redis
+        image: bitnami/redis
         env:
          - name: REDIS_PASSWORD
            value: password123
