@@ -45,7 +45,7 @@ fi
 /var/spool/cron/crontabs/rinat
 ```
 
-[Конфигурационный файл crontab](https://github.com/shafikovrr/rsync/blob/main/rinat)
+[Конфигурационный файл crontab](files/rinat)
 
 ![Rsync_2](img/rsync_2.png)
 
