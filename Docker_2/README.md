@@ -77,7 +77,7 @@ sudo docker exec -it shafikovrr-netology-db bash
 
 Выполните действия:
 1. Установите PgAdmin с именем контейнера <ваши фамилия и инициалы>-pgadmin
-2. Задайте логин администратора pgAdmin <ваша фамилия и инициалы>@ilove-netology.coshafikovrr@ilove-netology.comm и пароль на выбор.
+2. Задайте логин администратора pgAdmin <ваша фамилия и инициалы>@ilove-netology.com shafikovrr@ilove-netology.com и пароль на выбор.
 3. Назначте для данного контейнера статический IP из подсети 172.22.0.0/24
 4. Прокинте на 80 порт контейнера порт 61231
 
