@@ -77,7 +77,7 @@ sudo systemctl reload haproxy
 ```
 4 На проверку направьте конфигурационный файл haproxy, скриншоты, где видно перенаправление запросов на разные серверы при обращении к HAProxy.
 
-[Конфигурационный файл HaProxy](https://github.com/shafikovrr/HAProxy/blob/main/haproxy.cfg)
+[Конфигурационный файл HaProxy](files/haproxy.cfg)
 
 ![HaProxy_L4](img/HaProxy_L4.png)
 
@@ -173,7 +173,7 @@ backend web_servers # секция бэкенд
 ```
 4 На проверку направьте конфигурационный файл haproxy, скриншоты, где видно перенаправление запросов на разные серверы при обращении к HAProxy c использованием домена example.local и без него.
 
-[Конфигурационный файл HaProxy](https://github.com/shafikovrr/HAProxy/blob/main/haproxy2.cfg)
+[Конфигурационный файл HaProxy](files/haproxy2.cfg)
 
 ![HaProxy_L4](img/HaProxy_L7.png)
 
