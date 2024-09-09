@@ -148,7 +148,7 @@ Head_office(config)#ip nat inside source list FOR-NAT-HO interface GigabitEthern
 
 9) Ответ внесите в комментарии к решению задания в личном кабинете Нетологии
 
-[text](files/4-05-1.pkt)
+[4-05-1.pkt](files/4-05-1.pkt)
 
 # Задание 2
 
@@ -214,7 +214,7 @@ Branch_office#
 
 7. Ответ внесите в комментарии к решению задания в личном кабинете Нетологии.
 
-[text](files/4-05-2.pkt)
+[4-05-2.pkt](files/4-05-2.pkt)
 
 
 
